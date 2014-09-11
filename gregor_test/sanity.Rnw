@@ -1,0 +1,9 @@
+\documentclass{article}
+
+\begin{document}
+This should print ``Hello World'':
+<<foo>>=
+    print(x)
+@
+
+\end{document}

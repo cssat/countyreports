@@ -1,8 +1,0 @@
-Package: countyreports
-Title: What the package does (short line)
-Version: 0.1
-Authors@R: Gregor Passolt <gregorp@uw.edu> [aut, cre]
-Description: What the package does (paragraph)
-Depends: R (>= 3.1.0)
-License: MIT
-LazyData: true

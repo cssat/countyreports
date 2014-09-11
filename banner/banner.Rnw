@@ -1,0 +1,70 @@
+\documentclass{article}
+\usepackage{xltxtra} %% For XeTeX font commands
+\usepackage[margin = 0.5in]{geometry}
+\usepackage{graphicx}
+\usepackage{sectsty}
+\usepackage{tikz}
+
+%% Colors
+\definecolor{pocDGreen}{HTML}{788172}
+\definecolor{pocLGreen}{HTML}{A2B69A}
+\definecolor{pocDBlue}{HTML}{3B6E8F}
+\definecolor{pocLBlue}{HTML}{A3DCE6}
+\definecolor{pocPurple}{HTML}{A784B4}
+
+%% Fonts
+\setmainfont{Frutiger LT Std 55 Roman}
+\allsectionsfont{\fontspec{Archer}}
+
+\begin{document}
+
+\noindent
+\begin{tikzpicture}[x=1in, y=1in]
+
+    %%    Set up constants
+    \def\banX{\textwidth}
+    \def\banY{3in}
+    \def\stripeHeight{0.5in}
+    \def\stripeYpos{1.9in}
+    \def\triX{0.25in}
+    \def\triY{0.20in}
+    \def\logoInsetX{0.7in}
+    \def\logoInsetY{18pt}
+    
+%    \filldraw[pocLGreen] (current page.north west) + (0.5in, -0.5in) rectangle
+%        (current page.north east) + (0.5in, -\banY + 0.5in);
+    
+    %% Draw Background Geomety
+    \filldraw[pocLGreen] (0, 0) rectangle ++(\banX, \banY);
+    \filldraw[pocDGreen] (0, \stripeYpos) rectangle ++(\banX + \triX, \stripeHeight);
+    \filldraw[fill=pocLGreen, draw=pocDGreen, join=bevel, thick]
+        (\banX, \stripeYpos) -- ++(\triX, 0) -- ++(-\triX, -\triY) -- cycle;
+    
+    %% Above-stripe Text
+    \node[pocDBlue, below left = 6pt, align = right] at (\banX, \banY)
+        {\textbf{Automated Regional Report}\\\textbf{Generated \today}};
+    \node at (\logoInsetX, \banY - \logoInsetY)
+        {\includegraphics[height=0.3in]{pocLogoSmall}};
+    
+    %% Stripe Text
+    \node[right = 6pt, white] at (0, \stripeYpos + 16pt)
+        {\fontspec{Archer}\Huge{Focus on A County}};
+    
+    %% Below Stripe Text
+    \node[below right = 6pt, pocDBlue, align = left, text width = \textwidth - 12pt]
+        at (0, \stripeYpos - 6pt) {
+        This is a DRAFT VERSION for a Partners for Our Children automatically generated regional report.
+        Generally, the reports could be generated for any county; this sample report will focus on A Specific County.\\[6pt]
+        
+        Much like the Data Portal itself, the default report has three section: Investigations \& Assessments,
+        In-Home Services, and Out-of-Home Care. As a starting point, we give each of these two part,
+        the first a detailed Trends-style history specific to the focus county,
+        the second a dotplot to put the focus in context within its region.
+        Of course, adding more is possible--safety measures and the other categories that come with Out-of-Home Care would be easy to tack on.
+        (In fact, it would be easy to give the user the ability to select which sections are of interest.)
+    };
+    
+\end{tikzpicture}
+
+
+\end{document}

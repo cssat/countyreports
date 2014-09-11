@@ -1,0 +1,49 @@
+\documentclass{article}
+
+
+\usepackage{xltxtra} %% For XeTeX font commands
+\usepackage[includeheadfoot, margin = 0.5in]{geometry} %% Margins
+\usepackage{hyperref}
+\usepackage{graphicx} 
+\usepackage{sectsty} %% Change format (font) of section headers
+\usepackage{parskip} %% Lines between paragraphs, no indentation
+\usepackage{booktabs} %% Pretty up the tables
+\usepackage{xcolor}
+
+% \usepackage[normalem]{ulem} %% For underlines (in the URLs)
+% \DeclareUrlCommand{\ulurl}{\uline}
+
+%% Colors
+\definecolor{pocDGreen}{HTML}{3D4132}
+\definecolor{pocLGreen}{HTML}{9FB78D}
+\definecolor{pocDBlue}{HTML}{244356}
+\definecolor{pocLBlue}{HTML}{A3DCE6}
+\definecolor{pocPurple}{HTML}{A784B4}
+
+%% Fonts
+\setmainfont{Frutiger LT Std 55 Roman}
+\allsectionsfont{\fontspec{Archer}}
+
+\begin{document}
+
+This is a test to see if we can use extrafonts in graphics within a knitr document.
+
+\section{Try a graph}
+
+Here we go:
+
+<<>>=
+require(ggplot2)
+require(extrafont)
+loadfonts()
+
+ggplot(mtcars, aes(x=wt, y=mpg)) + geom_point() +
+    ggtitle("Fuel Efficiency of 32 Cars") +
+    xlab("Weight (x1000 lb)") + ylab("Miles per Gallon") +
+    theme_bw() +
+    theme(text=element_text(family="Frutiger LT Std 45 Light"))
+
+@
+
+
+\end{document}

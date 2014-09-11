@@ -1,0 +1,14 @@
+\documentclass{article}
+
+\begin{document}
+
+Here is a code chunk.
+
+<<results="asis", echo = FALSE>>=
+require(xtable)
+xtable(head(iris))
+@
+
+After the table
+
+\end{document}

@@ -1,0 +1,475 @@
+SyncTeX Version:1
+Input:1:G:\Data Portal\county_reports\gregor_test\banner.tex
+Input:2:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls
+Input:3:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\size10.clo
+Input:4:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\xltxtra\xltxtra.sty
+Input:5:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifluatex.sty
+Input:6:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.sty
+Input:7:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\fontspec\fontspec.sty
+Input:8:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\expl3.sty
+Input:9:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3names.sty
+Input:10:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3bootstrap.sty
+Input:11:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\misc\etex.sty
+Input:12:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3basics.sty
+Input:13:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3expan.sty
+Input:14:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3tl.sty
+Input:15:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3seq.sty
+Input:16:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3int.sty
+Input:17:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3quark.sty
+Input:18:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3prg.sty
+Input:19:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3clist.sty
+Input:20:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3token.sty
+Input:21:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3prop.sty
+Input:22:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3msg.sty
+Input:23:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3file.sty
+Input:24:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3skip.sty
+Input:25:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3keys.sty
+Input:26:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3fp.sty
+Input:27:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3box.sty
+Input:28:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3coffins.sty
+Input:29:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3color.sty
+Input:30:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3luatex.sty
+Input:31:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\l3kernel\l3candidates.sty
+Input:32:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty
+Input:33:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\l3packages\xparse\xparse.sty
+Input:34:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\fontspec\fontspec-patches.sty
+Input:35:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\fixltx2e.sty
+Input:36:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\fontspec\fontspec-xetex.sty
+Input:37:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\fontenc.sty
+Input:38:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\euenc\eu1enc.def
+Input:39:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\euenc\eu1lmr.fd
+Input:40:C:\Program Files (x86)\MiKTeX 2.9\tex\xelatex\xunicode\xunicode.sty
+Input:41:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\tipa\t3enc.def
+Input:42:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\euenc\eu1lmss.fd
+Input:43:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty
+Input:44:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty
+Input:45:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty
+Input:46:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty
+Input:47:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg
+Input:48:C:\Program Files (x86)\MiKTeX 2.9\tex\xelatex\xetex-def\xetex.def
+Input:49:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\fontspec\fontspec.cfg
+Input:50:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\realscripts\realscripts.sty
+Input:51:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\metalogo\metalogo.sty
+Input:52:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\geometry\geometry.sty
+Input:53:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifvtex.sty
+Input:54:C:\Program Files (x86)\MiKTeX 2.9\tex\xelatex\xetexconfig\geometry.cfg
+Input:55:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hyperref.sty
+Input:56:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-hyperref.sty
+Input:57:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\hobsub-generic.sty
+Input:58:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty
+Input:59:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\pd1enc.def
+Input:60:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\hyperref.cfg
+Input:61:C:\Program Files (x86)\MiKTeX 2.9\tex\xelatex\xetexurl\url.sty
+Input:62:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\hxetex.def
+Input:63:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\puenc.def
+Input:64:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\stringenc.sty
+Input:65:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\rerunfilecheck.sty
+Input:66:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\sectsty\sectsty.sty
+Input:67:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\frontendlayer\tikz.sty
+Input:68:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\basiclayer\pgf.sty
+Input:69:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\utilities\pgfrcs.sty
+Input:70:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfutil-common.tex
+Input:71:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfutil-latex.def
+Input:72:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\ms\everyshi.sty
+Input:73:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfrcs.code.tex
+Input:74:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\basiclayer\pgfcore.sty
+Input:75:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\systemlayer\pgfsys.sty
+Input:76:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pgfsys.code.tex
+Input:77:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfkeys.code.tex
+Input:78:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfkeysfiltered.code.tex
+Input:79:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pgf.cfg
+Input:80:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pgfsys-xetex.def
+Input:81:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pgfsys-common-pdf.def
+Input:82:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pgfsys-common-pdf-via-dvi.def
+Input:83:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pgfsyssoftpath.code.tex
+Input:84:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\systemlayer\pgfsysprotocol.code.tex
+Input:85:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\xcolor\xcolor.sty
+Input:86:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\color.cfg
+Input:87:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcore.code.tex
+Input:88:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmath.code.tex
+Input:89:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathcalc.code.tex
+Input:90:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathutil.code.tex
+Input:91:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathparser.code.tex
+Input:92:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunctions.code.tex
+Input:93:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunctions.basic.code.tex
+Input:94:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunctions.trigonometric.code.tex
+Input:95:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunctions.random.code.tex
+Input:96:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunctions.comparison.code.tex
+Input:97:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunctions.base.code.tex
+Input:98:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunctions.round.code.tex
+Input:99:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfunctions.misc.code.tex
+Input:100:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\math\pgfmathfloat.code.tex
+Input:101:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorepoints.code.tex
+Input:102:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorepathconstruct.code.tex
+Input:103:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorepathusage.code.tex
+Input:104:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorescopes.code.tex
+Input:105:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoregraphicstate.code.tex
+Input:106:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoretransformations.code.tex
+Input:107:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorequick.code.tex
+Input:108:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoreobjects.code.tex
+Input:109:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorepathprocessing.code.tex
+Input:110:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorearrows.code.tex
+Input:111:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoreshade.code.tex
+Input:112:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoreimage.code.tex
+Input:113:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoreexternal.code.tex
+Input:114:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorelayers.code.tex
+Input:115:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcoretransparency.code.tex
+Input:116:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\basiclayer\pgfcorepatterns.code.tex
+Input:117:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\modules\pgfmoduleshapes.code.tex
+Input:118:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\modules\pgfmoduleplot.code.tex
+Input:119:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\compatibility\pgfcomp-version-0-65.sty
+Input:120:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\compatibility\pgfcomp-version-1-18.sty
+Input:121:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\utilities\pgffor.sty
+Input:122:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\pgf\utilities\pgfkeys.sty
+Input:123:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgfkeys.code.tex
+Input:124:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\utilities\pgffor.code.tex
+Input:125:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\tikz.code.tex
+Input:126:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\libraries\pgflibraryplothandlers.code.tex
+Input:127:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\modules\pgfmodulematrix.code.tex
+Input:128:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\generic\pgf\frontendlayer\tikz\libraries\tikzlibrarytopaths.code.tex
+Input:129:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ltxmisc\parskip.sty
+Input:130:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\booktabs\booktabs.sty
+Input:131:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption.sty
+Input:132:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption3.sty
+Input:133:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\fancyhdr\fancyhdr.sty
+Input:134:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\se-ascii-print.def
+Input:135:G:\Data Portal\county_reports\gregor_test\banner.aux
+Input:136:C:\Users\gregorp.NEBULA2\AppData\Roaming\MiKTeX\2.9\tex\latex\tipa\t3cmr.fd
+Input:137:C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty
+Input:138:C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty
+Input:139:G:\Data Portal\county_reports\gregor_test\banner.out
+Input:140:G:\Data Portal\county_reports\gregor_test\banner.out
+Output:pdf
+Magnification:1000
+Unit:1
+X Offset:0
+Y Offset:0
+Content:
+!13170
+{1
+[1,115:0,48381705:33154008,48381705,0
+(1,115:0,0:0,0,0
+)
+[1,115:0,0:0,0,0
+(1,115:0,-4858756:0,0,0
+k1,115:0,-4858756:2433924
+)
+]
+[1,115:0,48381705:33154008,48381705,0
+h1,115:0,0:0,0,0
+[1,115:-2368143,48381705:35522151,53174680,0
+[1,115:-2368143,-4006543:35522151,786432,0
+(1,115:-2368143,-4006543:35522151,0,0
+h1,115:-2368143,-4006543:35522151,0,0
+)
+]
+[1,115:-2368143,46415625:35522151,48783768,0
+(1,108:-2368143,7604302:35522151,9972445,0
+h1,107:-2368143,7604302:0,0,0
+(1,107:-2368143,7604302:36745543,9972445,0
+g1,107:-2355036,7604302
+(1,107:-2355036,7591195:0,73400,0
+(1,74:-2355036,7591195:0,73400,0
+k1,74:-2355036,7591195:-182190
+)
+(1,107:-2355036,7591195:0,73400,0
+g1,74:-2355036,7591195
+g1,74:-2355036,7591195
+g1,74:-2355036,7591195
+g1,74:-2355036,7591195
+g1,74:-2355036,7591195
+g1,74:-2355036,7591195
+g1,74:-2355036,7591195
+g1,74:-2355036,7591195
+g1,74:-2355036,7591195
+g1,74:-2355036,7591195
+g1,74:-2355036,7591195
+g1,74:-2355036,7591195
+g1,74:-2355036,7591195
+g1,77:-2355036,7591195
+g1,78:-2355036,7591195
+g1,79:-2355036,7591195
+g1,80:-2355036,7591195
+g1,81:-2355036,7591195
+g1,82:-2355036,7591195
+g1,83:-2355036,7591195
+g1,84:-2355036,7591195
+g1,87:-2355036,7591195
+g1,87:-2355036,7591195
+g1,88:-2355036,7591195
+g1,88:-2355036,7591195
+g1,90:-2355036,7591195
+g1,90:-2355036,7591195
+g1,93:-2355036,7591195
+g1,94:-2355036,7591195
+(1,94:-2355036,7591195:0,73400,0
+(1,94:-2355036,7591195:0,73400,0
+g1,94:-2355036,7591195
+g1,94:-2355036,7591195
+(1,94:-2355036,7591195:0,73400,0
+k1,94:-2355036,7591195:-182190
+)
+(1,94:-2355036,7591195:0,0,0
+g1,94:24385752,7591195
+(1,94:24385752,-452331:0,0,0
+(1,94:24385752,-452331:0,0,0
+[1,94:24385752,-452331:8156611,1277952,145489
+(1,94:24385752,-1238763:8156611,491520,145489
+g1,94:24385752,-1238763
+(1,94:24385752,-1238763:8156611,491520,145489
+g1,94:24385752,-1238763
+(1,94:24385752,-1238763:8156611,491520,145489
+g1,94:28063633,-1238763
+g1,94:30466838,-1238763
+)
+)
+g1,94:32542363,-1238763
+)
+(1,94:24385752,-452331:8156611,491520,145489
+g1,94:24385752,-452331
+(1,94:24385752,-452331:8156611,491520,145489
+k1,94:25038491,-452331:652739
+g1,94:28462092,-452331
+g1,94:29991702,-452331
+g1,94:31084842,-452331
+)
+g1,94:32542363,-452331
+)
+]
+)
+)
+g1,94:24385752,7591195
+)
+g1,94:-2355036,7591195
+)
+)
+g1,96:-2355036,7591195
+(1,96:-2355036,7591195:0,73400,0
+(1,96:-2355036,7591195:0,73400,0
+g1,96:-2355036,7591195
+g1,96:-2355036,7591195
+g1,96:-2355036,7591195
+g1,96:-2355036,7591195
+(1,96:-2355036,7591195:0,73400,0
+k1,96:-2355036,7591195:-182190
+)
+(1,96:-2355036,7591195:0,0,0
+g1,96:-1475548,7591195
+(1,96:-1475548,-464938:0,0,0
+(1,96:-1475548,-464938:0,0,0
+(1,96:-1475548,-464938:4871796,1420900,0
+(1,96:-1475548,-464938:4871808,1420944,0
+(1,96:-1475548,-464938:4871808,1420944,0
+(1,96:-1475548,-464938:0,2752512,0
+(1,96:-1475548,-464938:9437184,2752512,0
+)
+k1,96:-1475548,-464938:-9437184
+)
+)
+)
+)
+)
+)
+g1,96:-1475548,7591195
+)
+g1,96:-2355036,7591195
+)
+)
+g1,99:-2355036,7591195
+g1,100:-2355036,7591195
+(1,100:-2355036,7591195:0,73400,0
+(1,100:-2355036,7591195:0,73400,0
+g1,100:-2355036,7591195
+g1,100:-2355036,7591195
+g1,100:-2355036,7591195
+g1,100:-2355036,7591195
+(1,100:-2355036,7591195:0,73400,0
+k1,100:-2355036,7591195:-182190
+)
+(1,100:-2355036,7591195:0,0,0
+g1,100:-1730283,7591195
+(1,100:-1730283,1953494:0,0,0
+(1,100:-1730283,1953494:0,0,0
+g1,100:2800977,1953494
+g1,100:4961437,1953494
+g1,100:9882395,1953494
+)
+)
+g1,100:-1730283,7591195
+)
+g1,100:-2355036,7591195
+)
+)
+g1,103:-2355036,7591195
+g1,105:-2355036,7591195
+(1,105:-2355036,7591195:0,73400,0
+(1,105:-2355036,7591195:0,73400,0
+g1,105:-2355036,7591195
+g1,105:-2355036,7591195
+g1,105:-2355036,7591195
+g1,105:-2355036,7591195
+(1,105:-2355036,7591195:0,73400,0
+k1,105:-2355036,7591195:-182190
+)
+(1,105:-2355036,7591195:0,0,0
+g1,105:-1730283,7591195
+(1,105:-1730283,3742216:0,0,0
+(1,105:-1730283,3742216:0,0,0
+[1,105:-1730283,3742216:34735719,499384,3291217
+(1,105:-1730283,3742216:34735719,499384,145489
+h1,104:-1730283,3742216:0,0,0
+h1,104:-1730283,3742216:0,0,0
+k1,105:-309923,3742216:218430
+k1,105:1582952,3742216:218430
+k1,105:2602232,3742216:218430
+k1,105:4641907,3742216:218430
+k1,105:7080041,3742216:218430
+k1,105:9228506,3742216:218430
+k1,105:9884061,3742216:218430
+k1,105:11267721,3742216:218430
+k1,105:12141511,3742216:218430
+k1,105:12724321,3742216:218430
+k1,105:14618507,3742216:218430
+k1,105:15492297,3742216:218430
+k1,105:19097628,3742216:218430
+k1,105:21390928,3742216:218430
+k1,105:23976518,3742216:218430
+k1,105:25324133,3742216:218430
+k1,105:28346848,3742216:218430
+k1,105:30750248,3742216:218430
+k1,105:33005436,3742216:325153
+)
+(1,105:-1730283,4528648:34735719,499384,145489
+k1,105:-492113,4528648:218430
+k1,105:1291972,4528648:218430
+k1,105:4840942,4528648:218430
+k1,105:6516237,4528648:218430
+k1,105:8555913,4528648:218430
+k1,105:9502448,4528648:218430
+k1,105:12669998,4528648:218430
+k1,105:16566309,4528648:218430
+k1,105:17585589,4528648:218430
+k1,105:19443074,4528648:218430
+k1,105:21446049,4528648:218430
+k1,105:23194089,4528648:218430
+k1,105:24067879,4528648:218430
+k1,105:25306049,4528648:218430
+k1,105:26980689,4528648:218430
+k1,105:29530235,4528648:218430
+k1,105:33005436,4528648:1253531
+)
+(1,105:-1730283,5315080:34735719,499384,145489
+k1,105:2712598,5315080:218430
+k1,105:3404198,5315080:218430
+k1,105:7519399,5315080:218430
+k1,105:10359269,5315080:218430
+k1,105:13127050,5315080:218430
+k1,105:14510710,5315080:218430
+k1,105:18806790,5315080:218430
+k1,105:20591531,5315080:218430
+k1,105:21526270,5315080:218430
+k1,105:23565290,5315080:218430
+k1,105:24803460,5315080:218430
+k1,105:26478755,5315080:218430
+k1,105:28518431,5315080:218430
+k1,105:29902091,5315080:218430
+k1,105:31140261,5315080:218430
+k1,105:33005436,5315080:189419
+)
+(1,105:-1730283,6101512:34735719,499384,145489
+k1,105:563017,6101512:218430
+k1,105:3148607,6101512:218430
+k1,105:4568967,6101512:218430
+k1,105:20080223,6101512:218430
+k1,105:20735778,6101512:218430
+k1,105:22082738,6101512:218430
+k1,105:23284863,6101512:218430
+k1,105:25906498,6101512:218430
+k1,105:27217413,6101512:218430
+k1,105:30530453,6101512:218430
+k1,105:31549733,6101512:218430
+k1,105:33005436,6101512:690898
+)
+(1,105:-1730283,6887944:34735719,491520,145489
+g1,105:4350343,6887944
+g1,105:6680998,6887944
+g1,105:7919168,6887944
+g1,105:9557763,6887944
+g1,105:11123613,6887944
+g1,105:13089888,6887944
+g1,105:15748223,6887944
+k1,105:33005436,6887944:13943057
+g1,105:33005436,6887944
+)
+]
+)
+)
+g1,105:-1730283,7591195
+)
+g1,105:-2355036,7591195
+)
+)
+g1,107:-2355036,7591195
+)
+g1,107:-2355036,7591195
+)
+)
+g1,108:34377400,7604302
+g1,108:34377400,7604302
+)
+(1,111:-2368143,9101801:35522151,632291,16042
+(1,111:-2368143,9101801:0,0,0
+g1,111:-2368143,9101801
+)
+(1,111:-2368143,9101801:0,0,0
+(1,111:-2368143,9101801:0,0,0
+(1,111:-2368143,7922153:0,0,0
+)
+)
+g1,111:-2368143,9101801
+)
+k1,111:33154008,9101801:31468882
+g1,111:33154008,9101801
+)
+(1,114:-2368143,10591436:35522151,499384,145489
+k1,113:-1068737,10591436:170221
+k1,113:2816065,10591436:170221
+k1,113:3641645,10591436:170220
+k1,113:5559711,10591436:170221
+k1,113:6895162,10591436:170221
+k1,113:9104863,10591436:170221
+k1,113:11642245,10591436:170221
+k1,113:13850624,10591436:170209
+k1,113:15805389,10591436:170220
+k1,113:17796200,10591436:170221
+k1,113:20224136,10591436:170221
+k1,113:21268607,10591436:170221
+k1,113:22932394,10591436:170221
+k1,113:25032650,10591436:170221
+k1,113:25967675,10591436:170220
+k1,113:28067276,10591436:170221
+k1,113:31187273,10591436:170221
+k1,113:33154008,10591436:0
+)
+(1,114:-2368143,11377868:35522151,491520,137625
+g1,113:71762,11377868
+g1,113:3556311,11377868
+g1,113:5268111,11377868
+k1,114:33154007,11377868:25591480
+g1,114:33154007,11377868
+)
+]
+(1,115:-2368143,48381705:35522151,0,0
+h1,115:-2368143,48381705:35522151,0,0
+)
+]
+]
+]
+!7675
+}1
+Input:141:G:\Data Portal\county_reports\gregor_test\banner.aux
+!72
+Postamble:
+Count:315
+!25
+Post scriptum:

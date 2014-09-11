@@ -1,0 +1,6 @@
+\documentclass{article}
+\begin{document}
+<<>>=
+    print(x)
+@
+\end{document}

@@ -1,0 +1,125 @@
+\documentclass{article}\usepackage{graphicx, color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.2, 0.2, 0.2}
+\newcommand{\hlnumber}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlfunctioncall}[1]{\textcolor[rgb]{0.501960784313725,0,0.329411764705882}{\textbf{#1}}}%
+\newcommand{\hlstring}[1]{\textcolor[rgb]{0.6,0.6,1}{#1}}%
+\newcommand{\hlkeyword}[1]{\textcolor[rgb]{0,0,0}{\textbf{#1}}}%
+\newcommand{\hlargument}[1]{\textcolor[rgb]{0.690196078431373,0.250980392156863,0.0196078431372549}{#1}}%
+\newcommand{\hlcomment}[1]{\textcolor[rgb]{0.180392156862745,0.6,0.341176470588235}{#1}}%
+\newcommand{\hlroxygencomment}[1]{\textcolor[rgb]{0.43921568627451,0.47843137254902,0.701960784313725}{#1}}%
+\newcommand{\hlformalargs}[1]{\textcolor[rgb]{0.690196078431373,0.250980392156863,0.0196078431372549}{#1}}%
+\newcommand{\hleqformalargs}[1]{\textcolor[rgb]{0.690196078431373,0.250980392156863,0.0196078431372549}{#1}}%
+\newcommand{\hlassignement}[1]{\textcolor[rgb]{0,0,0}{\textbf{#1}}}%
+\newcommand{\hlpackage}[1]{\textcolor[rgb]{0.588235294117647,0.709803921568627,0.145098039215686}{#1}}%
+\newcommand{\hlslot}[1]{\textit{#1}}%
+\newcommand{\hlsymbol}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlprompt}[1]{\textcolor[rgb]{0.2,0.2,0.2}{#1}}%
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{xltxtra} %% For XeTeX font commands
+\usepackage[margin = 0.5in]{geometry}
+\usepackage{graphicx}
+\usepackage{sectsty}
+\usepackage{tikz}
+
+%% Colors
+\definecolor{pocDGreen}{HTML}{788172}
+\definecolor{pocLGreen}{HTML}{A2B69A}
+\definecolor{pocDBlue}{HTML}{3B6E8F}
+\definecolor{pocLBlue}{HTML}{A3DCE6}
+\definecolor{pocPurple}{HTML}{A784B4}
+
+%% Fonts
+\setmainfont{Frutiger LT Std 55 Roman}
+\allsectionsfont{\fontspec{Archer}}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+
+\begin{document}
+
+\noindent
+\begin{tikzpicture}[x=1in, y=1in]
+
+    %%    Set up constants
+    \def\banX{\textwidth}
+    \def\banY{3in}
+    \def\stripeHeight{0.5in}
+    \def\stripeYpos{1.9in}
+    \def\triX{0.25in}
+    \def\triY{0.20in}
+    \def\logoInsetX{0.7in}
+    \def\logoInsetY{18pt}
+    
+%    \filldraw[pocLGreen] (current page.north west) + (0.5in, -0.5in) rectangle
+%        (current page.north east) + (0.5in, -\banY + 0.5in);
+    
+    %% Draw Background Geomety
+    \filldraw[pocLGreen] (0, 0) rectangle ++(\banX, \banY);
+    \filldraw[pocDGreen] (0, \stripeYpos) rectangle ++(\banX + \triX, \stripeHeight);
+    \filldraw[fill=pocLGreen, draw=pocDGreen, join=bevel, thick]
+        (\banX, \stripeYpos) -- ++(\triX, 0) -- ++(-\triX, -\triY) -- cycle;
+    
+    %% Above-stripe Text
+    \node[pocDBlue, below left = 6pt, align = right] at (\banX, \banY)
+        {\textbf{Automated Regional Report}\\\textbf{Generated \today}};
+    \node at (\logoInsetX, \banY - \logoInsetY)
+        {\includegraphics[height=0.3in]{pocLogoSmall}};
+    
+    %% Stripe Text
+    \node[right = 6pt, white] at (0, \stripeYpos + 16pt)
+        {\fontspec{Archer}\Huge{Focus on A County}};
+    
+    %% Below Stripe Text
+    \node[below right = 6pt, pocDBlue, align = left, text width = \textwidth - 12pt]
+        at (0, \stripeYpos - 6pt) {
+        This is a DRAFT VERSION for a Partners for Our Children automatically generated regional report.
+        Generally, the reports could be generated for any county; this sample report will focus on A Specific County.\\[6pt]
+        
+        Much like the Data Portal itself, the default report has three section: Investigations \& Assessments,
+        In-Home Services, and Out-of-Home Care. As a starting point, we give each of these two part,
+        the first a detailed Trends-style history specific to the focus county,
+        the second a dotplot to put the focus in context within its region.
+        Of course, adding more is possible--safety measures and the other categories that come with Out-of-Home Care would be easy to tack on.
+        (In fact, it would be easy to give the user the ability to select which sections are of interest.)
+    };
+    
+\end{tikzpicture}
+
+
+\end{document}
