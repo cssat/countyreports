@@ -1,3 +1,9 @@
 .Rproj.user
 .Rhistory
 .RData
+County*.pdf
+*.tex
+*.aux
+*.out
+*.bak
+*.log
