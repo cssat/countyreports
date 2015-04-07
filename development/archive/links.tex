@@ -1,0 +1,37 @@
+\documentclass{article}
+
+\usepackage{xltxtra}
+\usepackage[includeheadfoot, margin = 0.5in]{geometry}
+\usepackage{hyperref}
+\usepackage{sectsty}
+\usepackage[normalem]{ulem}
+
+\setmainfont{Minion Pro}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\hypersetup{hidelinks, urlcolor = blue, unicode = true}
+
+\makeatletter
+\DeclareUrlCommand\ULurl@@{%
+  \def\UrlFont{\ttfamily\color{blue}}%
+  \def\UrlLeft{\uline\bgroup}%
+  \def\UrlRight{\egroup}}
+\def\ULurl@#1{\hyper@linkurl{\ULurl@@{#1}}{#1}}
+\DeclareRobustCommand*\ULurl{\hyper@normalise\ULurl@}
+\makeatother
+
+\renewcommand{\sectionmark}[1]{\markboth{\MakeUppercase{#1}}{\MakeUppercase{#1}}}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{%
+\leaders\hrule height \headrulewidth\hfill}}
+\rhead{\leftmark}
+
+\begin{document}
+
+\section{Section Title with \href{www.tex.stackexchange.com}{\uline{Link}}}
+Here is a link: \href{www.tex.stackexchange.com}{\uline{Stackexchange}}
+
+
+\end{document}

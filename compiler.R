@@ -3,7 +3,7 @@ require(knitr)
 
 display_county <- "Pierce"
 
-knit2pdf("S:/Data Portal/county_reports/development/template_v8.Rnw",
+knit2pdf("development/template_v10.Rnw",
          compiler = "xelatex")
 
 

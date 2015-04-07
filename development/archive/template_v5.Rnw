@@ -1,0 +1,261 @@
+\documentclass{article}
+
+\usepackage{xltxtra} %% For XeTeX font commands
+\usepackage[includeheadfoot, margin = 0.5in]{geometry} %% Margins
+\usepackage{hyperref}
+\usepackage{graphicx} 
+\usepackage{sectsty} %% Change format (font) of section headers
+\usepackage{tikz}    %% Graphics for banner
+\usepackage{parskip} %% Lines between paragraphs, no indentation
+\usepackage{booktabs} %% Pretty up the tables
+\usepackage[width = .5\textwidth]{caption} %% Width of captions
+\usepackage{xcolor}
+
+% \usepackage[normalem]{ulem} %% For underlines (in the URLs)
+% \DeclareUrlCommand{\ulurl}{\uline}
+
+%% Colors
+\definecolor{pocDGreen}{HTML}{788172}
+\definecolor{pocLGreen}{HTML}{A2B69A}
+\definecolor{pocDBlue}{HTML}{3B6E8F}
+\definecolor{pocLBlue}{HTML}{A3DCE6}
+\definecolor{pocPurple}{HTML}{A784B4}
+
+%% Fonts
+\setmainfont{Frutiger LT Std 55 Roman}
+\allsectionsfont{\fontspec{Archer}}
+
+\usepackage{fancyhdr} %% Header and Footer formatting
+\pagestyle{fancy}
+
+%% Hyperlinks, PDF properties
+\hypersetup{
+    pdftitle = {POC County Report},
+    pdfauthor = {Partners for Our Children},
+    pdfcreator = {Gregor Passolt},
+    pdfproducer = {Gregor Passolt},
+    %hidelinks,
+    unicode = true
+}
+
+% \makeatletter
+% \DeclareUrlCommand\ULurl@@{%
+%   %\def\UrlFont{\ttfamily\color{blue}}%
+%   \def\UrlLeft{\uline\bgroup}%
+%   \def\UrlRight{\egroup}}
+% \def\ULurl@#1{\hyper@linkurl{\ULurl@@{#1}}{#1}}
+% \DeclareRobustCommand*\ULurl{\hyper@normalise\ULurl@}
+% \makeatother
+
+
+%%% Header
+\renewcommand{\sectionmark}[1]{\markboth{\MakeUppercase{#1}}{\MakeUppercase{#1}}}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{%
+\color{pocDGreen}\leaders\hrule height \headrulewidth\hfill}}
+\rhead{\color{pocDGreen} \leftmark}
+
+%%% Footer
+\lfoot{\color{pocDGreen} \href{http://www.partnersforourchildren.org}{www.partnersforourchildren.org}}
+\rfoot{\color{pocDGreen} \thepage}
+\renewcommand{\footrulewidth}{0.5pt}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{pocDGreen}\leaders\hrule height \footrulewidth\hfill}}
+
+\begin{document}
+\frenchspacing %% Single space after period
+<<set-options, echo = FALSE, cache = FALSE>>=
+read_chunk('county_reports_v2.R')
+opts_chunk$set(fig.align='center', fig.show='hold', echo=FALSE)
+@
+
+<<frontmatter, cache=FALSE, include=FALSE>>=
+@
+
+\lhead{\color{pocDGreen} \Sexpr{display_county} County Report}
+\thispagestyle{empty} %% No header/footer on first page
+
+%\vspace{-2in}
+
+\begin{tikzpicture}[x=1in, y=1in]
+
+    %%    Set up constants
+    \def\banX{\textwidth}
+    \def\banY{2.1in}
+    \def\stripeHeight{0.5in}
+    \def\stripeYpos{0.55in} %% From top
+    \def\triX{0.25in}
+    \def\triY{0.15in}
+    \def\logoInsetX{0.7in}
+    \def\logoInsetY{18pt}
+    
+    %% Draw Background Geomety
+    \filldraw[pocLGreen] (0, 0) rectangle ++(\banX, \banY);
+    \filldraw[pocDGreen] (0, \banY - \stripeYpos) rectangle ++(\banX + \triX, - \stripeHeight);
+    \filldraw[fill=pocLGreen, draw=pocDGreen, join=bevel, thick]
+        (\banX, \banY - \stripeYpos - \stripeHeight) -- ++(\triX, 0) -- ++(-\triX, -\triY) -- cycle;
+    
+    %% Above-stripe Text
+    \node[pocDBlue, below left = 6pt, align = right] at (\banX, \banY)
+        {\textbf{Automated County Report}\\\textbf{Generated \today}};
+    \node at (\logoInsetX, \banY - \logoInsetY)
+        {\includegraphics[height=0.3in]{pocLogoSmall}};
+    
+    %% Stripe Text
+    \node[right = 6pt, white] at (0, \banY - \stripeYpos - \stripeHeight + 16pt)
+        {\fontspec{Archer}\Huge{Focus on \Sexpr{display_county} County}};
+    
+    %% Below Stripe Text
+    \node[below right = 6pt, pocDBlue, align = left, text width = \textwidth - 12pt]
+        at (0, \banY - \stripeYpos - \stripeHeight - 3pt) {
+         This \emph{Focus on \Sexpr{display_county} County} report is one of a series of county-focused reports. The reports mirror the structure of the Child Well-Being Data Portal by providing information on three major parts of the child welfare system: Investigations \& Assessments, In-Home Services, and Out-of-Home Care. Each report is updated quarterly; check the Partners for Our Children webpage for the most recent version.
+        If you are viewing this document on an Internet-connected device, light blue boxes indicate hyperlinks.} ;
+    
+\end{tikzpicture}
+
+\vspace{-18pt}
+
+\section*{Overview}
+
+The Department of Social and Health Services (DSHS) divides Washington State into three regions. \Sexpr{display_county} County is in Region~\Sexpr{region_cd}, along with \Sexpr{comma_vector(region_counties_tx)} counties.
+
+As is done on the Data Portal, this report categorizes trends in Investigations \& Assessments and trends in In-Home Services by DCFS (Division of Children and Family Services) offices and office groups, whereas trends in Out-of-Home Care are geographically categorized by county. 
+
+\emph{County Focus} sections for Investigations \& Assessments and for In-Home Services display quarterly point-in-time (i.e., first day of the quarter) trend data for each DCFS office/office group in \Sexpr{display_county} County. The \emph{County Focus} section for Out-of-Home Care shows quarterly point-in-time trend data for the entire county.
+
+\emph{Region \Sexpr{region_cd}} sections feature "dotplots" that compare rates of Investigations \& Assessments and of In-Home Services per 1,000 households for all office/office groups in \Sexpr{display_county} County. A third \emph{Region \Sexpr{region_cd}} section also provides a dotplot that compares rates of Out-of-Home Care per 1,000 children for each county in Region~\Sexpr{region_cd}. Washington State is also included in the dotplots to give context to the rates presented in each regional section.  See \href{http://www.partnersforourchildren.org/publications/counts-vs-rates}{Technical Bulletin: The Difference Between Counts and Rates} for more information.
+
+Table 1 provides relevant Census data for \Sexpr{display_county} County and Washington State. Census data for the total population and for the number of children under 18 years of age are used in the calculation of the rates in the \emph{Region \Sexpr{region_cd}} sections below.
+
+<<overview, echo = FALSE, results = "asis">>=
+
+@
+
+\section{\href{http://www.partnersforourchildren.org//child-well-being/visualizations/investigations-assessments/trends}
+{Investigations \& Assessments}}
+When professionals and community members report suspected instances of child abuse or neglect to the child welfare system, some of the reports are investigated, some are assessed only (e.g., Family Reconciliation Services), and some \emph{screened out} because the information reported (if true) does not meet the statutory definition of child abuse or neglect and there is no need for an assessment.
+
+\subsection{\href{http://www.partnersforourchildren.org//child-well-being/visualizations/investigations-assessments/trends}
+{Investigations \& Assessments:} \Sexpr{display_county} County Focus}
+The following graphs indicate recent trends in Investigations \& Assessments for the two DCFS offices/office groups in \Sexpr{display_county} County.
+Data are presented using "unduplicated counts" (see \href{http://http://www.partnersforourchildren.org/publications/using-different-count-types-data-portal}{Technical Bulletin: Interpreting the Type of Count Filter} for more information).  
+\nopagebreak[2]
+<<ia_focus, cache=FALSE, echo=FALSE, fig.keep="high", fig.width=fig_width, fig.height=trend_fig_height>>=
+@
+
+
+
+\subsection{
+    \href{http://www.partnersforourchildren.org//child-well-being/visualizations/investigations-assessments/trends}
+    {Investigations \& Assessment: Region \Sexpr{region_cd}}}
+To give context to the trend data, the following plot shows the rate of Investigations \& Assessments for Quarter \Sexpr{quarter(as.POSIXlt(context_date))}, \Sexpr{year(as.POSIXlt(context_date))} for Region~\Sexpr{region_cd} office groups and all of Washington State.
+\nopagebreak[3]
+<<ia_context, cache=FALSE, echo=FALSE, fig.width=fig_width, fig.height=0.5+context_fig_2line_coef*length(region_groups)>>=
+@
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ----
+\section{\href{http://www.partnersforourchildren.org/child-well-being/visualizations/home-services/trends}
+    {In-Home Services}
+}
+When an investigation identifies a threat to a child's safety, case workers will first determine if the child can be kept safely at home through a safety plan. If so, the family and child may be provided with various services that range from concrete support (e.g., food, appliance repair, etc.) to referrals to community services (e.g., drug and alcohol assessments, etc.).
+
+
+\subsection{\href{http://www.partnersforourchildren.org/child-well-being/visualizations/home-services/trends}
+    {In-Home Services: \Sexpr{display_county} County Focus}
+}
+The following graphs show the recent trends in In-Home Services for the two DCFS offices in
+\Sexpr{display_county} County.
+Data are presented using "unduplicated counts" (see \href{http://http://www.partnersforourchildren.org/publications/using-different-count-types-data-portal}{Technical Bulletin: Interpreting the Type of Count Filter} for more information). 
+\nopagebreak[3]
+<<ihs_focus, cache=FALSE, echo=FALSE, fig.keep="high", fig.width=fig_width, fig.height=trend_fig_height>>=
+@
+
+
+
+\subsection{\href{http://www.partnersforourchildren.org/child-well-being/visualizations/home-services/trends}
+    {In-Home Services:} Region \Sexpr{region_cd}
+}
+To give context to the trend data above, the following plot shows the rate of In-Home Services for Quarter \Sexpr{quarter(as.POSIXlt(context_date))}, \Sexpr{year(as.POSIXlt(context_date))} for Region~\Sexpr{region_cd} offices and all of Washington State.
+\nopagebreak[3]
+<<ihs_context, cache=FALSE, echo=FALSE, fig.width=fig_width, fig.height=0.5+context_fig_2line_coef*length(region_groups)>>=
+@
+
+
+\subsection{\href{http://www.partnersforourchildren.org/child-well-being/visualizations/home-services/safety}
+    {In-Home Services: Safety}
+}
+At times, the in-home services provided to families do not, or cannot, adequately address the issues identified during the investigation. Other times, new issues are raised during the course of an in-home services case. Either way, when the case worker decides that it is not possible for the child to remain safely in their home, steps will be taken to place the child in out-of-home care.
+
+The measurements in Table 2 identify placement into Out-of-Home Care among families and their children who have received In-Home Services for one year and for two years. If the in-home services are completed effectively, and/or circumstances become such that the child can remain in-home safely, there should be no need to place the child in out-of-home care. Thus, in general, the lower percentages indicate better outcomes.
+
+<<ihs_safety, results = "asis">>=
+@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ----
+\section{\href{http://www.partnersforourchildren.org/child-well-being/visualizations/out-home-care/trends}
+    {Out-of-Home Care}
+}
+When children cannot remain safely in their home, they are placed in out-of-home care. Once a child is removed, the child welfare system works to find a safe and permanent home for the child. Most children ultimately reunify with their parents after all safety conerns have been addressed; however, some children exit to other permanency outcomes (e.g., adoption, guardianship, etc.).
+
+Note that \Sexpr{comma_vector(omit_ooh_counties)} counties are omitted from comparisons in the Out-of-Home Care section due to a small number of out-of-home placements.
+
+\subsection{\href{http://www.partnersforourchildren.org/child-well-being/visualizations/out-home-care/trends}
+ {Out-of-Home Care: \Sexpr{display_county} County Focus}
+}
+The following graph shows the recent trends in Out-of-Home Care for
+\Sexpr{display_county} County. Data are presented using "unduplicated counts" (see \href{http://http://www.partnersforourchildren.org/publications/using-different-count-types-data-portal}{Technical Bulletin: Interpreting the Type of Count Filter} for more information). 
+\nopagebreak[3]
+<<ooh_focus, cache=FALSE, echo=FALSE, fig.keep="high", fig.width=fig_width, fig.height=trend_fig_height>>=
+
+@
+
+\subsection{\href{http://www.partnersforourchildren.org/child-well-being/visualizations/out-home-care/trends}
+    {Out-of-Home Care: Region \Sexpr{region_cd}}
+}
+To give context to the trend data above, the following plot shows the rate of Out-of-Home Care for Quarter \Sexpr{quarter(as.POSIXlt(context_date))}, \Sexpr{year(as.POSIXlt(context_date))} for Region~\Sexpr{region_cd} counties and all of Washington.
+\nopagebreak[3]
+<<ooh_context, cache=FALSE, echo=FALSE, fig.width=fig_width, fig.height=0.5+context_fig_1line_coef*length(region_counties)>>=
+
+@
+
+\subsection{\href{http://www.partnersforourchildren.org/child-well-being/visualizations/out-home-care/safety}
+    {Out-of-Home Care: Safety}
+}
+
+Sometimes, when children experience a given permanency outcome (e.g., reunification, guardianship, adoption), safety concerns resurface in the child's home. In such circumstances, these safety concerns can be severe enough that the child needs to re-enter out-of-home care.
+
+Table 3 identifies the percentage of children re-entering out-of-home care within two years of discharge, by discharge type, for all of the counties in Region~\Sexpr{region_cd}, as well as for Washington State overall. The higher percentages of re-entry point to the challenges of providing a safe permanent placement for the child.
+\nopagebreak[3]
+<<ooh_safety, results = "asis">>=
+@
+In the table, "NA" indicates that no children in the cohort exited to that discharge type, whereas "0\%" indicates that children did exit to that discharge type, but none re-entered care.
+
+%% Outcomes Chunk
+\subsection{\href{http://www.partnersforourchildren.org/child-well-being/visualizations/out-home-care/outcomes}
+    {Out-of-Home Care: Outcomes}
+}
+Under the Adoption and Safe Families Act of 1997 (ASFA), the goal of the child welfare system is to ensure that children are placed in safe and permanent homes as quickly as possible. The child welfare system seeks to first reunify children with their families when it is safe to do so. If children are unable to be safely reunified, permanency is achieved through adoption or guardianship. Some children exit from the system for other reasons such as emancipation or transfer of custody to different jurisdictions.
+
+The following bar graph shows the percentage of children in the 2010 entry cohort achieving each outcome for \Sexpr{display_county} County, Region~\Sexpr{region_cd}, and Washington State.
+\nopagebreak[3]
+<<ooh_outcomes, cache=FALSE, echo=FALSE, fig.width=fig_width, fig.height=4>>=
+
+@
+
+%% Well-Being
+\subsection{\href{http://www.partnersforourchildren.org/child-well-being/visualizations/out-home-care/well-being}
+    {Out-of-Home Care: Well-Being}
+}
+
+When placement in out-of-home care is necessary, the physical and psychological needs and well-being of the child must be considered. While individual needs vary, and well-being is difficult to measure directly, research has shown that placement with siblings and placement in kinship care enhances a child's physical and emotional health. Yet, in some cases, the child's best interests necessitate placement separate from their sibling(s) or in a non-family setting. For example, a sibling with physical, emotional, or mental conditions may require specialized services in order to accomplish specific therapeutic goals. In such cases, siblings may be separated and/or a child may be placed in a non-family setting until those therapeutic goals are met.
+
+As a summary measurement of child well-being, the next graph shows the percent of care-days spent in kinship care for the counties in Region~\Sexpr{region_cd} from 2008 to 2012.
+\nopagebreak[3]
+<<ooh_wb, cache=FALSE, echo=FALSE, fig.width=0.9*fig_width, fig.height=0.7+context_fig_1line_coef*length(region_counties_tx[region_counties_tx %nin% omit_ooh_counties])>>=
+
+@
+
+
+\end{document}
+
