@@ -86,8 +86,8 @@ function (context_data, focus = "none", xlab, title = "", state_label = "Washing
 
 #### Pick a database ####
 
-#db <- "production"
-db <- "review"
+db <- "production"
+#db <- "review"
 #db <- "test"
 
 #########################
