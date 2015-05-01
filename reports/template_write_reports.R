@@ -44,7 +44,7 @@ counties <- counties[counties %nin% omit_ooh_counties]
 #counties <- c("Grays Harbor", "San Juan", "Pend Oreille", "Walla Walla")
 #counties <- c("Benton", "Franklin", "Kittitas", "Klickitat", "Walla Walla", "Yakima")
 
-plyr::l_ply(counties, function(x) write_report(x, upload = FALSE))
+#plyr::l_ply(counties, function(x) write_report(x, upload = FALSE))
 
 for (i in seq_along(counties)) {
     try(write_report(counties[i]))

@@ -4,7 +4,8 @@
 ## @knitr frontmatter
 library(pocr)
 library(dplyr)
-#display_county <- "Adams"
+
+# display_county <- "King"
 
 
 ## BEGIN TEMP DELETE ME
@@ -105,8 +106,11 @@ if (db == "review") {
     con_test <- odbcConnect("test_annie")
 }
 
-
 if (db == "test") con <- odbcConnect("test_annie")
+
+
+
+## Date stuff!
 
 data_through_date <- sqlQuery(con, "select * from ref_last_dw_transfer")[1, 1]
 
@@ -115,25 +119,32 @@ last_complete$year <- year(data_through_date) - 1
 
 # Date ranges for queries. DO NOT RENAME without changing .Rnw file too ----
 # data_through_date
-ia_start_date <-  as.Date("2010-01-01")
-ihs_start_date <- as.Date("2010-01-01")
-ooh_start_date <- as.Date("2010-01-01")
-context_date <- as.Date("2014-01-01") ## Using last quarter for context
+dtd = as.Date(data_through_date)
+start_date = floor_date(dtd, unit = "year") - years(4)
+
+floor_quarter = function(x) {
+    x = floor_date(x, unit = "month")
+    q = ((month(x) - 1) %/% 3) + 1
+    update(x, month = q)
+}
+
+ia_start_date  <- start_date
+ihs_start_date <- start_date
+ooh_start_date <- start_date
+
+# Use last quarter for context date
+context_date = floor_quarter(dtd) - months(3)
 context_date_string <- paste0("Quarter ", quarter(context_date), ", ", year(context_date))
 
-ia_context_date <- as.Date("2014-10-01") ## Using last quarter for context
-ia_context_date_string <- paste(month(ia_context_date, label = T, abbr = F),
-                                 "1,", year(ia_context_date))
+ooh_wb <- floor_quarter(dtd)
+wb_start_date <- floor_quarter(dtd)
 
-# TODO are the end dates still needed?
-ia_end_date <- as.Date("2014-12-01")
-ihs_end_date <- ooh_end_date <- as.Date("2014-12-01")
-cohort_date <- as.Date("2011-01-01")
-wb_start_date <- as.Date("2014-01-01")
-wb_end_date <- as.Date(wb_start_date + duration(2, "years") - duration(1, "months"))
-ooh_wb <- as.Date("2014-01-01")
-
+cohort_date <- floor_date(dtd, unit = "year") - years(3)
 cohort_year <- year(cohort_date)
+
+
+
+## Figure geometry
 
 ## Setting figure dimensions ----
 fig_width <- 6
@@ -147,7 +158,6 @@ context_fig_b <- 1.4
 
 ## All subsequent chunks should be able to depend on this one alone. ----
 library(xtable)
-library(lubridate)
 library(extrafont)
 
 ## xtable and ggplot options
@@ -160,8 +170,9 @@ focus_county <- tolower(display_county)
 focus_county_cd <- ref_lookup_county$county_cd[tolower(ref_lookup_county$county) == focus_county]
 focus_info <- county_to_office(focus_county)
 state_label <- "Washington"
-omit_ooh_counties <- c("Garfield", "Lincoln", "San Juan", "Wahkiakum",
-                       "Skamania", "Columbia", "Klickitat", "Pacific", "Asotin")
+omit_ooh_counties <- c("Adams", "Asotin", "Columbia", "Ferry", "Garfield",
+                       "Klickitat", "Lincoln", "Pacific", "Pend Oreille",
+                       "San Juan", "Skamania", "Wahkiakum")
 
 ## Get counties in same region
 region_cd <- ref_lookup_county$region_cd[ref_lookup_county$county_cd == focus_county_cd]
@@ -173,15 +184,8 @@ region_info <- do.call(rbind, county_to_office_v(region_counties))
 ## Background info
 context_year <- year(context_date)
 
-# TODO I don't think the case handling for this is necessary anymore
-if (db == "production" | db == "review") {
-    focus_pop_person <- sqlQuery(con, paste0("call sp_population_person(", focus_county_cd, ",", context_year, ");"))$total
-    focus_pop_house <- sqlQuery(con, paste0("call sp_population_household(", focus_county_cd, ",", context_year, ");"))$total
-}
-if (db == "test") {
-    focus_pop_person <- sqlQuery(con, paste0("call sp_population_person(", focus_county_cd, ",", context_year, ");"))$total
-    focus_pop_house <- sqlQuery(con, paste0("call sp_population_household(", focus_county_cd, ",", context_year, ");"))$total
-}
+focus_pop_person <- sqlQuery(con, paste0("call sp_population_person(", focus_county_cd, ",", context_year, ");"))$total
+focus_pop_house <- sqlQuery(con, paste0("call sp_population_household(", focus_county_cd, ",", context_year, ");"))$total
 
 ####################################
 #### Get data
@@ -220,6 +224,15 @@ ia_region  <- cr_clean(ia_region)
 ihs_region <- cr_clean(ihs_region)
 ooh_region <- cr_clean(ooh_region)
 
+ia_region_a <- filter(ia_region, date == max(date)) %>%
+    select(county, opened.investigations.and.assessments) %>%
+    mutate(county = gsub("All", "Washington", county)) %>%
+    filter(county %nin% omit_ooh_counties) # might need to drop unused levels here
+
+ia_context_date <- max(ia_region$date)
+ia_context_date_string <- paste0("Quarter ", quarter(ia_context_date), ", ", year(ia_context_date))
+
+
 ## Permanency Data  -- uses cohort_date
 
 perm_call <- list()
@@ -236,13 +249,13 @@ perm2 <- sqlQuery(con, perm_call[[2]])
 perm1 <- cr_clean(perm1, date.type = 2)
 perm2 <- cr_clean(perm2, date.type = 2)
 
-
 cohort_period <- max(perm2$cohort.period)
 
 perm_ent <- perm2 %>% left_join(ent) %>% filter(cohort.period == cohort_period) %>%
 	group_by(discharge) %>%
 	summarize(percent = weighted.mean(x = percent, w = number.of.entries)) %>%
-	mutate(geo = "Region 2") %>% select(geo, discharge, percent)
+	mutate(geo = "Region 2") %>%
+    select(geo, discharge, percent)
 
 
 	
@@ -259,14 +272,6 @@ perm$discharge <- factor(perm$discharge, levels = c("Reunification", "Adoption",
 
 perm$geo <- gsub("All", "Washington", perm$geo)
 
-
-## IHS Safety
-
-ihs_safety_call <- sp_cr("ihs_safety", date = cohort_date, county = c(0, focus_county))
-ihs_safety_data <- sqlQuery(con, ihs_safety_call)
-ihs_safety_data <- cr_clean(ihs_safety_data)
-
-
 ## OOH Safety 
 
 ooh_safety_call <- sp_cr("ooh_reentry", date = cohort_date, county = c(0, region_counties))
@@ -274,15 +279,14 @@ ooh_safety_data <- sqlQuery(con, ooh_safety_call)
 ooh_safety_data <- cr_clean(ooh_safety_data)
 
 ## Well-Being Data
-wb_dates <- seq.Date(from = wb_start_date,
-                     to = wb_end_date,
-                     by = "month")
 					 
 county_arg <- 0:39
+wb_year = last_complete$year
 
-wb_call <- sp_cr("ooh_wb_familysettings", county = county_arg, date = wb_dates)
+wb_call <- sp_cr("ooh_wb_familysettings", county = county_arg)
 wb <- sqlQuery(con, wb_call)
-wb <- cr_clean(wb)
+wb <- cr_clean(wb) %>%
+    filter(year(date) == wb_year)
 wb <- wb[, c("date", "county", "family.setting..kin.placement.")]
 
 wb_pop_call <- sp_cr("ooh_pit_counts", county = county_arg)
@@ -291,19 +295,15 @@ wb_pop <- cr_clean(wb_pop, date.type = 2)
 
 wb <- inner_join(wb, wb_pop, by = c("date", "county"))
 
-# I believe we don't need this anymore
-# wb_fn <- function(wb) {
-    # sum(wb[, 3] * wb[, 5]) / sum(wb[, 5])
-# }
-# wb_5 <- ddply(filter(wb, date == ooh_wb), .variables= "county", .fun= wb_fn)
+wb_context = wb %>% 
+    filter(county %nin% omit_ooh_counties &
+               county %in% region_counties_tx |
+               county == "All")
 
-wb_5 <- filter(wb, date == ooh_wb)
-
-wb_context <- wb_5[wb_5$county %in% c(region_counties_tx[region_counties_tx %nin% omit_ooh_counties], "All"), , drop = TRUE]
-wb_context <- select(wb_context, county, family.setting..kin.placement.)
-names(wb_context) <- c("county", "V1")
+#names(wb_context) <- c("county", "V1")
 levels(wb_context$county)[levels(wb_context$county) == "All"] <- state_label
-wb_context$county <- reorder(wb_context$county, X=wb_context$V1)
+wb_context$county <- reorder(wb_context$county,
+                             X = wb_context$family.setting..kin.placement.)
 
 wb_context$context_highlight <- ifelse(wb_context$county == display_county, 1, 0)
 wb_context$context_highlight[wb_context$county == state_label] <- 2
@@ -412,17 +412,11 @@ trend_plot3(ia_focus_a, type = "ia",
 ## ia_context ----
 ## @knitr ia_context
 
-ia_region_a <- dplyr::filter(ia_region, date == context_date)
-ia_region_a <- dplyr::select(ia_region_a, county, opened.investigations.and.assessments)
-ia_region_a$county <- gsub("All", "Washington", ia_region_a$county)
-ia_region_a <- ia_region_a[ia_region_a$county %nin% omit_ooh_counties, ,drop = TRUE]
-
-
 context_plot(ia_region_a,
              focus = display_county,
              colors = dotplot_colors,
              xlab = "Rate of Investigations & Assessments\n(per 1,000 Households)",
-             title = paste0("Investigations & Assessments:\nRegion ", region_cd, ", ", context_date_string),
+             title = paste0("Investigations & Assessments:\nRegion ", region_cd, ", ", ia_context_date_string),
              title_size = plot_title_size)
 
 
@@ -450,26 +444,6 @@ context_plot(ihs_region_a, focus = display_county,
              colors = dotplot_colors,
              title_size = plot_title_size)		 
 			 
-## ihs_safety ----
-## @knitr ihs_safety
-
-names(ihs_safety_data) <- c("months_since_placement", "cohort_period", "placed")
-
-ihs_safety_data <- dplyr::filter(ihs_safety_data, months_since_placement == 12 | months_since_placement == 24, cohort_period == cohort_year)
-ihs_table <- ihs_safety_data
-ihs_table[, 3] <- paste0(round(ihs_table[, 3]), "%")
-ihs_table <- as.data.frame(cbind(ihs_table[c(1),3], ihs_table[c(2),3]))
-names(ihs_table) <- c("Within 1 Year", "Within 2 Years")
-
-ihs_cap <- paste("Percent of", cohort_year, "Placement Prevention Services Cases Resulting in Out-of-Home Care Placement")
-
-print.xtable(xtable(ihs_table,
-                    caption = ihs_cap),
-                    align = c("r", "r"),
-             caption.placement = "top",
-             include.rownames = FALSE,
-             floating = TRUE,
-             booktabs = TRUE)
 
 ## ooh_focus ----
 ## @knitr ooh_focus   
@@ -496,8 +470,10 @@ context_plot(ooh_region_a, focus = display_county,
 ## ooh_safety----
 ## @knitr ooh_safety
 
-ooh_safety_data <- filter(ooh_safety_data, cohort.entry.date == cohort_year, discharge.type == "Reunification",
-							months.since.exiting.out.of.home.care == 24)
+ooh_safety_data <- filter(ooh_safety_data,
+                          cohort.entry.date == cohort_year,
+                          discharge.type == "Reunification",
+                          months.since.exiting.out.of.home.care == 12)
 ooh_safety_data <- select(ooh_safety_data, county, re.entry.percent)
 ooh_safety_data <- ooh_safety_data[ooh_safety_data$county %nin% omit_ooh_counties, , drop = TRUE]
 ooh_safety_data$county <- gsub("All", "Washington", ooh_safety_data$county)	
@@ -511,7 +487,7 @@ ooh_safety_data[, 2] <- paste0(round(ooh_safety_data[, 2]), "%")
 
 names(ooh_safety_data) <-  c("County", " Re-Entry")
 
-ooh_safety_cap <- paste('Percentage of Children Re-Entering Out-of-Home Care within Two Years of Exiting Out-of-Home Care,',
+ooh_safety_cap <- paste('Percentage of Children Re-Entering Out-of-Home Care within One Year of Exiting Out-of-Home Care,',
                         cohort_year,
                         "Exit Cohort")
 
@@ -550,21 +526,21 @@ ggplot(perm, aes(x = discharge, y = percent/100, fill = geo)) +
 ## ooh_wb ----
 ## @knitr ooh_wb
 
-
-
 # wb_title <- paste0("Kinship Care: Region ", region_cd,
                    # "\nQuarter ", quarter(wb_start_date), ", ", year(wb_start_date),
                    # " through ", "Quarter ", quarter(wb_end_date), ", ", year(wb_end_date))
 
-wb_title <- paste0("Kinship Care ", year(ooh_wb), ": Region ", region_cd)
+wb_title <- paste0("Kinship Care, ", pretty_date(wb_context$date[1]), ": Region ", region_cd)
 				   
-ggplot(wb_context, aes(x = V1 / 100, y = county, color = context_highlight)) +
+ggplot(wb_context, aes(x = family.setting..kin.placement. / 100,
+                       y = county, color = context_highlight)) +
     geom_point(size = 5, shape = 18) +
     scale_color_manual(values = dotplot_colors) +
-    labs(x = "Percent of Days Spent in Kinship Care",
+    labs(x = "Percent of Children in Kinship Care",
          y = "",
          title = wb_title) +
-    scale_x_continuous(labels = percent_format(), limits = c(.00, 1.15 * max(wb_context$V1 / 100)),
+    scale_x_continuous(labels = percent_format(),
+                       limits = c(.00, 1.15 * max(wb_context$family.setting..kin.placement. / 100)),
                        expand = c(0, 0)) +
     theme_bw() +
     theme(text = element_text(family = font),
