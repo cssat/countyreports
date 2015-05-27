@@ -29,7 +29,7 @@
 \definecolor{pocPurple}{HTML}{A784B4}
 
 %% Fonts
-\setmainfont[Ligatures=TeX]{PT Sans}
+\setmainfont[Ligatures=TeX]{Frutiger LT Std 45 Light}
 \allsectionsfont{\fontspec{Archer}}
 
 \usepackage{fancyhdr} %% Header and Footer formatting

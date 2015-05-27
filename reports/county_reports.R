@@ -5,7 +5,7 @@
 library(pocr)
 library(dplyr)
 
-# display_county <- "King"
+display_county <- "King"
 
 
 ## BEGIN TEMP DELETE ME
@@ -13,7 +13,7 @@ library(dplyr)
 
 trend_plot3 <-
  function (trend_data, type = c("ooh", "ia", "ihs"), title = NA, 
-    title_size = 1.2, font = "PT Sans") {
+    title_size = 1.2, font = "Frutiger LT Std 45 Light") {
     type <- match.arg(type)
     names(trend_data) <- c("date", "count", "geo")
     switch(type, ooh = {
@@ -55,7 +55,7 @@ trend_plot3 <-
 
 context_plot <-
 function (context_data, focus = "none", xlab, title = "", state_label = "Washington", 
-    colors = portal_colors[c(8, 4, 2)], title_size = 1.2, font = "PT Sans") {
+    colors = portal_colors[c(8, 4, 2)], title_size = 1.2, font = "Frutiger LT Std 45 Light") {
     names(context_data)[1:2] <- c("focus_group", "x_data")
     context_data$focus_indicator <- ifelse(context_data[, 1] %in% 
         focus, 1, ifelse(context_data[, 1] %in% state_label, 
@@ -87,9 +87,9 @@ function (context_data, focus = "none", xlab, title = "", state_label = "Washing
 
 #### Pick a database ####
 
-db <- "production"
+#db <- "production"
 #db <- "review"
-#db <- "test"
+db <- "test"
 
 #########################
 
@@ -107,7 +107,6 @@ if (db == "review") {
 }
 
 if (db == "test") con <- odbcConnect("test_annie")
-
 
 
 ## Date stuff!
@@ -143,7 +142,6 @@ cohort_date <- floor_date(dtd, unit = "year") - years(3)
 cohort_year <- year(cohort_date)
 
 
-
 ## Figure geometry
 
 ## Setting figure dimensions ----
@@ -164,11 +162,11 @@ library(extrafont)
 options(xtable.NA.string = "NA")
 dotplot_colors <- portal_colors[c(8, 4, 2)]
 plot_title_size = 1.0 ## rel size
-font = "PT Sans"
+font = "Frutiger LT Std 45 Light"
 
 focus_county <- tolower(display_county)
 focus_county_cd <- ref_lookup_county$county_cd[tolower(ref_lookup_county$county) == focus_county]
-focus_info <- county_to_office(focus_county)
+# focus_info <- county_to_office(focus_county)
 state_label <- "Washington"
 omit_ooh_counties <- c("Adams", "Asotin", "Columbia", "Ferry", "Garfield",
                        "Klickitat", "Lincoln", "Pacific", "Pend Oreille",
@@ -178,7 +176,7 @@ omit_ooh_counties <- c("Adams", "Asotin", "Columbia", "Ferry", "Garfield",
 region_cd <- ref_lookup_county$region_cd[ref_lookup_county$county_cd == focus_county_cd]
 region_counties <- ref_lookup_county[ref_lookup_county$region_cd %in% ref_lookup_county[tolower(ref_lookup_county$county) == focus_county, 3], 1]
 region_counties_tx <- ref_lookup_county$county[region_counties]
-region_info <- do.call(rbind, county_to_office_v(region_counties))
+#region_info <- do.call(rbind, county_to_office_v(region_counties))
 
 
 ## Background info
@@ -434,7 +432,7 @@ trend_plot3(ihs_focus_a, type = "ihs",
 ## @knitr ihs_context
 
 ihs_region_a <- filter(ihs_region, date == context_date)		 
-ihs_region_a <- select(ihs_region_a, county, total.pps.cases.1st.day)
+ihs_region_a <- select(ihs_region_a, county, total.placement.prevention.service.cases.1st.day)
 ihs_region_a$county <- gsub("All", "Washington", ihs_region_a$county)
 ihs_region_a <- ihs_region_a[ihs_region_a$county %nin% omit_ooh_counties, , drop = TRUE]
 
@@ -473,8 +471,10 @@ context_plot(ooh_region_a, focus = display_county,
 ooh_safety_data <- filter(ooh_safety_data,
                           cohort.entry.date == cohort_year,
                           discharge.type == "Reunification",
-                          months.since.exiting.out.of.home.care == 12)
-ooh_safety_data <- select(ooh_safety_data, county, re.entry.percent)
+                          months.since.exiting.out.of.home.care == 12) %>%
+                          arrange(re.entry.percent) %>%
+                          select(county, re.entry.percent)
+
 ooh_safety_data <- ooh_safety_data[ooh_safety_data$county %nin% omit_ooh_counties, , drop = TRUE]
 ooh_safety_data$county <- gsub("All", "Washington", ooh_safety_data$county)	
 					

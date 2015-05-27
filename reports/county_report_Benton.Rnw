@@ -29,7 +29,7 @@
 \definecolor{pocPurple}{HTML}{A784B4}
 
 %% Fonts
-\setmainfont[Ligatures=TeX]{PT Sans}
+\setmainfont[Ligatures=TeX]{Frutiger LT Std 45 Light}
 \allsectionsfont{\fontspec{Archer}}
 
 \usepackage{fancyhdr} %% Header and Footer formatting
@@ -216,17 +216,6 @@ To give context to the \Sexpr{display_county} County office(s') trend data, the 
 <<ihs_context, cache=FALSE, echo=FALSE, fig.width=fig_width, fig.height = context_fig_b + context_fig_a * length(region_counties)>>=
 @
 
-%' \newpage
-%' 
-%' \subsection{\href{http://www.partnersforourchildren.org/data-portal/visualizations/home-services/safety}
-%'     {Placement Prevention Services: Safety}
-%' }
-%' At times, the Placement Prevention Services provided to families do not, or cannot, adequately address the issues identified during the investigation. Other times, new issues are raised during the course of a Placement Prevention Services case. Either way, when the case worker decides that it is not possible for the child to remain safely in their home, steps will be taken to place the child in out-of-home care.
-%' 
-%' The measurements in Table 1 identify placement into out-of-home care among families and their children who have received Placement Prevention Services. If the Placement Prevention Services are completed and effective, and/or circumstances become such that the child can remain in-home safely, there should be no need to place the child in out-of-home care. Thus, in general, the lower percentages indicate better outcomes. Note that these percentages are totals; that is, the percentage within two years takes into account the percent from the first year.
-%' \vspace{12pt}
-%' <<ihs_safety, results = "asis">>=
-%' @
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ----
 \newpage
@@ -299,8 +288,6 @@ The following bar graph shows the percentage of children in the \Sexpr{year(coho
 When placement in out-of-home care is necessary, the physical and psychological needs, as well as the general well-being of the child must be considered. While individual needs vary and well-being is difficult to measure directly, research has shown that placement in kinship care (i.e., a relative's home) can enhance a child's physical and emotional health. Yet, in some cases, the child's best interests necessitate placement in a non-family setting. For example, a child may need specialized services to accomplish a specific therapeutic goal. In such cases, a child may be placed in a non-family setting until those therapeutic goals are met.
 
 Assuming that to some extent kinship care measures child's well-being in an out-of-home setting, the graph below shows the percent of children placed in kinship care (as opposed to foster care or a non-family setting) for the counties in Region~\Sexpr{region_cd}. While in out-of-home care, children often stay in different settings. For example, a child can start in a foster home, but then move to kinship care as soon as a willing and able relative is identified. The online Data Portal provides a more detailed look at kinship care, as well as several other measures related to child well-being.
-
-%The online Data Portal provides another view of kinship care. The Portal shows, for instance, that in \Sexpr{display_county} County on December 1, 2012, 36\% of the children in out-of-home care were in kinship care, while 59\% were in state or private foster care and 5\% were in a non-family placement setting.
 
 \nopagebreak[3]
 <<ooh_wb, cache=FALSE, echo=FALSE, fig.width=fig_width, fig.height = context_fig_b + context_fig_a * length(region_counties)>>=
