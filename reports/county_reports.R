@@ -5,7 +5,7 @@
 library(pocr)
 library(dplyr)
 
-# display_county <- "King"
+display_county <- "King"
 
 
 ## Updated version KEEP ME!
@@ -81,9 +81,6 @@ function (context_data, focus = "none", xlab, title = "", state_label = "Washing
                 "lines"))
 }
 
-
-
-## END TEMP DELETE ME
 
 
 #### Pick a database ####
@@ -386,11 +383,11 @@ hl_names <- c("\\textbf{U.S. Census Bureau (2012)}",
               "\\quad Percent of Population Under 5 Years",
               "\\quad Percent of Population Under 18 Years",
               #paste0("\\textbf{Child Well-Being Data Portal (", pretty_date(hl_date), ")}"),
-              paste0("\\textbf{Child Well-Being Data Portal"),
+              paste0("\\textbf{Child Well-Being Data Portal}"),
               "\\quad Number of Open Investigations \\& Assessments",
               #"\\quad Number of Open Placement Prevention Services Cases",
-              paste0("\\quad Number of Open Out-of-Home Care Cases, (", pretty_date(hl_date), ")}"),
-              paste0("\\quad Percent of Out-of-Home Care Cases: Children Under 5 Years, (", pretty_date(hl_date), ")}"))
+              paste0("\\quad Number of Open Out-of-Home Care Cases, (", pretty_date(hl_date), ")"),
+              paste0("\\quad Percent of Out-of-Home Care Cases: Children Under 5 Years, (", pretty_date(hl_date), ")"))
 
 hl <- data.frame(v1 = hl_names, v2 = hl)
 
@@ -417,31 +414,6 @@ context_plot(ia_region_a,
              xlab = "Rate of Investigations & Assessments\n(per 1,000 Households)",
              title = paste0("Investigations & Assessments:\nRegion ", region_cd, ", ", ia_context_date_string),
              title_size = plot_title_size)
-
-
-## ihs_focus ----
-## @knitr ihs_focus
-			
-ihs_focus_a <- ihs_focus[, 1:2]
-ihs_focus_a$geo = paste(display_county, "County")
-			
-trend_plot3(ihs_focus_a, type = "ihs",
-            title_size = plot_title_size)
-
-
-## ihs_context----
-## @knitr ihs_context
-
-ihs_region_a <- filter(ihs_region, date == context_date)		 
-ihs_region_a <- select(ihs_region_a, county, total.placement.prevention.service.cases.1st.day)
-ihs_region_a$county <- gsub("All", "Washington", ihs_region_a$county)
-ihs_region_a <- ihs_region_a[ihs_region_a$county %nin% omit_ooh_counties, , drop = TRUE]
-
-context_plot(ihs_region_a, focus = display_county,
-             xlab = "Rate of Placement Prevention Services (per 1,000 Households)",
-             title = paste0("Placement Prevention Services:\nRegion ", region_cd, ", ", context_date_string),
-             colors = dotplot_colors,
-             title_size = plot_title_size)		 
 			 
 
 ## ooh_focus ----
