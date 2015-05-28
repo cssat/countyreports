@@ -5,10 +5,10 @@
 library(pocr)
 library(dplyr)
 
-display_county <- "King"
+# display_county <- "King"
 
 
-## BEGIN TEMP DELETE ME
+## Updated version KEEP ME!
 
 
 trend_plot3 <-
@@ -36,17 +36,18 @@ trend_plot3 <-
         text_pos = ifelse(count > 0, count - 0.05 * max(count), 
             0.05 * max(count)), gtzero = factor(count > 0, levels = c(TRUE, 
             FALSE)))
-    tp <- ggplot(trend_data, aes(x = date, y = count)) + facet_wrap(~geo, 
-        ncol = 1, scales = "free") + geom_bar(stat = "identity", 
-        fill = poc_colors[1], color = NA) + geom_text(aes(label = formatC(count, 
-        big.mark = ","), y = text_pos, color = gtzero), size = 2.5, 
-        family = font) + scale_colour_manual(values = c("white", 
-        "black")) + theme_bw() + scale_y_continuous(labels = comma_format()) + 
-        labs(x = "", y = stock_ylab, title = title) + theme(text = element_text(family = font), 
-        axis.title.y = element_text(vjust = -0.05), plot.margin = unit(c(1, 
-            1, 1, 1), "lines"), plot.title = element_text(size = rel(title_size), 
-            vjust = 1, hjust = 0), strip.background = element_rect(fill = poc_colors[3], 
-            size = NA), legend.position = "none")
+    tp <- ggplot(trend_data, aes(x = date, y = count)) + 
+        facet_wrap(~geo, ncol = 1, scales = "free") + 
+        geom_bar(stat = "identity", fill = poc_colors[1], color = NA) + 
+        geom_text(aes(label = formatC(count, big.mark = ","), y = text_pos, color = gtzero), size = 2.5, family = font) + 
+        scale_colour_manual(values = c("white", "black")) + 
+        theme_bw() + scale_y_continuous(labels = comma_format()) + 
+        labs(x = "", y = stock_ylab, title = title) + 
+        theme(text = element_text(family = font), 
+              axis.title.y = element_text(vjust = .5), 
+              plot.margin = unit(c(1, 1, 1, 1), "lines"), 
+              plot.title = element_text(size = rel(title_size), vjust = 1, hjust = 0), 
+              strip.background = element_rect(fill = poc_colors[3], size = NA), legend.position = "none")
     if (length(levels(trend_data$geo)) == 1) {
         tp <- tp + scale_y_continuous(limits = c(0, 1.1 * max(trend_data$count)))
     }
@@ -122,9 +123,9 @@ dtd = as.Date(data_through_date)
 start_date = floor_date(dtd, unit = "year") - years(4)
 
 floor_quarter = function(x) {
-    x = floor_date(x, unit = "month")
-    q = ((month(x) - 1) %/% 3) + 1
-    update(x, month = q)
+   x = floor_date(x, unit = "month")
+   q = ((month(x) - 1) %/% 3) + 1
+   update(x, month = (q - 1) * 3 + 1)
 }
 
 ia_start_date  <- start_date
@@ -140,7 +141,6 @@ wb_start_date <- floor_quarter(dtd)
 
 cohort_date <- floor_date(dtd, unit = "year") - years(3)
 cohort_year <- year(cohort_date)
-
 
 ## Figure geometry
 
@@ -375,7 +375,7 @@ hl <- qf_print[c(1, 3, 4), 1]
 hl <- c("",
         hl,
         "",
-        formatC(hl_ia_a[1,4], big.mark=","),
+        # formatC(hl_ia_a[1,4], big.mark=","),
         formatC(hl_ihs_a[1,6], big.mark=","),
         formatC(hl_ooh_a[hl_ooh_a$age.grouping.cd == 0, 4], big.mark = ","),
         paste0(round(100*hl_ooh_a[hl_ooh_a$age.grouping.cd == 1, 4] / hl_ooh_a[hl_ooh_a$age.grouping.cd == 0, 4]), "%"))
@@ -386,8 +386,8 @@ hl_names <- c("\\textbf{U.S. Census Bureau (2012)}",
               "\\quad Percent of Population Under 5 Years",
               "\\quad Percent of Population Under 18 Years",
               paste0("\\textbf{Child Well-Being Data Portal (", pretty_date(hl_date), ")}"),
-              "\\quad Number of Open Investigations \\& Assessments",
-              "\\quad Number of Open In-Home Service Cases",
+              #"\\quad Number of Open Investigations \\& Assessments",
+              "\\quad Number of Open Placement Prevention Services Cases",
               "\\quad Number of Open Out-of-Home Care Cases",
               "\\quad Percent of Out-of-Home Care Cases: Children Under 5 Years")
 
