@@ -121,16 +121,16 @@ opts_chunk$set(fig.align='center', fig.show='hold', echo=FALSE, warning = FALSE)
     %% Below Stripe Text
     \node[below right = 6pt, pocDBlue, align = left, text width = \textwidth - 12pt]
         at (0, \banY - \stripeYpos - \stripeHeight) {
-         This \emph{Focus on \Sexpr{display_county} County} report is one of a series of automated county reports for Washington State. These quarterly reports mirror the Child Well-Being Data Portal by providing information on three major parts of the child welfare system: Investigations \& Assessments, Placement Prevention Services, and Out-of-Home Care. To access the Data Portal and the latest county reports, visit \href{http://www.partnersforourchildren.org/data-portal}{www.partnersforourchildren.org/data-portal}.} ;  
+         This \emph{Focus on \Sexpr{display_county} County} report is one of a series of automated county reports for Washington State. These quarterly reports mirror the Child Well-Being Data Portal by providing information on two major parts of the child welfare system: Investigations \& Assessments and Out-of-Home Care. To access the Data Portal and the latest county reports, visit \href{http://www.partnersforourchildren.org/data-portal}{www.partnersforourchildren.org/data-portal}.} ;  
 \end{tikzpicture}
 
 \vspace{-18pt}
 
 \section*{Overview}
 \vspace{-6pt}
-The Department of Social and Health Services (DSHS) divides Washington State into three regions. \Sexpr{display_county} County is in Region~\Sexpr{region_cd}, along with \Sexpr{comma_vector(region_counties_tx[-which(region_counties_tx == display_county)], oxford = FALSE)} counties. The following report includes basic graphs and tables for Investigations \& Assessments, Placement Prevention Services and Out-of-Home Care in \Sexpr{display_county} County}.
+The Department of Social and Health Services (DSHS) divides Washington State into three regions. \Sexpr{display_county} County is in Region~\Sexpr{region_cd}, along with \Sexpr{comma_vector(region_counties_tx[-which(region_counties_tx == display_county)], oxford = FALSE)} counties. The following report includes basic graphs and tables for Investigations \& Assessments and Out-of-Home Care in \Sexpr{display_county} County}.
 
-The Investigations \& Assessments section (page \pageref{p:ia}) and the Placement Prevention Services section (page \pageref{p:ihs}) provide household data on, respectively, the total number of investigations and assessments and in-home service cases since \Sexpr{year(ihs_start_date)}, as well as comparative rates for investigations and assessments and in-home service cases for all Region~\Sexpr{region_cd} counties.
+The Investigations \& Assessments section (page \pageref{p:ia}) provides household data on, respectively, the total number of investigations and assessments cases since \Sexpr{year(ihs_start_date)}, as well as comparative rates for investigations and assessments cases for all Region~\Sexpr{region_cd} counties.
   
 The Out-of-Home Care section (page \pageref{p:ooh}) provides total counts and comparative rates for the same time periods, but counts children, not households. The Out-of-Home Care section also provides basic graphs depicting safety, permanency outcomes and well-being for children in out-of-home care.
 
@@ -185,35 +185,6 @@ The graph displays point-in-time (i.e., first day of the quarter) trends in inve
 To give context to the \Sexpr{display_county} County offices' trend data, the following plot compares the rate of investigations \& assessments on \Sexpr{context_date_string} for each Region~\Sexpr{region_cd} county and for Washington State.  Rates, rather than counts (or total numbers), are used because they account for the population differences.
 \nopagebreak[3]
 <<ia_context, cache=FALSE, echo=FALSE, fig.width=fig_width, fig.height = context_fig_b + context_fig_a * length(region_counties) >>=
-@
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ----
-\newpage
-\section{\href{http://www.partnersforourchildren.org/data-portal/visualizations/home-services/trends}
-    {Placement Prevention Services}
-}
-When an investigation identifies a threat to a child's safety, case workers will first determine if the child can be kept safely at home through a safety plan. If so, the family and child may be provided with various services that range from concrete support (e.g., food, appliance repair, etc.) to referrals to community services (e.g., drug and alcohol assessments, etc.).\\[6pt]
-\label{p:ihs}
-
-\begin{minipage}{\textwidth}
-\subsection{\href{http://www.partnersforourchildren.org/data-portal/visualizations/home-services/trends}
-    {Placement Prevention Services: \Sexpr{display_county} County Focus}
-}
-The following display point-in-time (i.e., first day of the quarter) trends in Placement Prevention Services cases for \Sexpr{display_county} County. % update if second graph is added
-\nopagebreak[3]
-<<ihs_focus, cache=FALSE, echo=FALSE, fig.keep="high", fig.width=fig_width, fig.height=trend_fig_a * length(focus_county) + trend_fig_b, message = FALSE>>=
-
-@
-\end{minipage}
-
-\newpage
-
-\subsection{\href{http://www.partnersforourchildren.org/data-portal/visualizations/home-services/trends}
-    {Placement Prevention Services:} Region~\Sexpr{region_cd}
-}
-To give context to the \Sexpr{display_county} County office(s') trend data, the following plot compares the rate of Placement Prevention Services in quarter \Sexpr{quarter(as.POSIXlt(context_date))} of \Sexpr{year(as.POSIXlt(context_date))} for each Region~\Sexpr{region_cd} county and for Washington State. Rates, rather than a total number, are used because they account for the population differences.
-\nopagebreak[3]
-<<ihs_context, cache=FALSE, echo=FALSE, fig.width=fig_width, fig.height = context_fig_b + context_fig_a * length(region_counties)>>=
 @
 
 

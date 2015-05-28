@@ -368,15 +368,15 @@ print(xtable(qf_print,
 
 hl_ia_a <- dplyr::filter(hl_ia, date == context_date)
 hl_ihs_a <- dplyr::filter(hl_ihs, date == context_date)
-hl_ooh_a <- dplyr::filter(hl_ooh, date == context_date)
+hl_ooh_a <- dplyr::filter(hl_ooh, date == floor_quarter(dtd))
 
 hl <- qf_print[c(1, 3, 4), 1]
 
 hl <- c("",
         hl,
         "",
-        # formatC(hl_ia_a[1,4], big.mark=","),
-        formatC(hl_ihs_a[1,6], big.mark=","),
+        formatC(hl_ia_a[1,4], big.mark=","),
+        # formatC(hl_ihs_a[1,6], big.mark=","),
         formatC(hl_ooh_a[hl_ooh_a$age.grouping.cd == 0, 4], big.mark = ","),
         paste0(round(100*hl_ooh_a[hl_ooh_a$age.grouping.cd == 1, 4] / hl_ooh_a[hl_ooh_a$age.grouping.cd == 0, 4]), "%"))
 hl <- str_replace_all(hl, pattern="%", replacement="\\\\%")
@@ -385,11 +385,12 @@ hl_names <- c("\\textbf{U.S. Census Bureau (2012)}",
               "\\quad Total Population",
               "\\quad Percent of Population Under 5 Years",
               "\\quad Percent of Population Under 18 Years",
-              paste0("\\textbf{Child Well-Being Data Portal (", pretty_date(hl_date), ")}"),
-              #"\\quad Number of Open Investigations \\& Assessments",
-              "\\quad Number of Open Placement Prevention Services Cases",
-              "\\quad Number of Open Out-of-Home Care Cases",
-              "\\quad Percent of Out-of-Home Care Cases: Children Under 5 Years")
+              #paste0("\\textbf{Child Well-Being Data Portal (", pretty_date(hl_date), ")}"),
+              paste0("\\textbf{Child Well-Being Data Portal"),
+              "\\quad Number of Open Investigations \\& Assessments",
+              #"\\quad Number of Open Placement Prevention Services Cases",
+              paste0("\\quad Number of Open Out-of-Home Care Cases, (", pretty_date(hl_date), ")}"),
+              paste0("\\quad Percent of Out-of-Home Care Cases: Children Under 5 Years, (", pretty_date(hl_date), ")}"))
 
 hl <- data.frame(v1 = hl_names, v2 = hl)
 
