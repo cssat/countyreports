@@ -144,18 +144,19 @@ The Out-of-Home Care section (page \pageref{p:ooh}) provides total counts and co
  
 We hope this report serves as a valuable tool for  \Sexpr{display_county} County.
 
-\begin{minipage}{0.6\textwidth}
-%\vspace{-1.8in}
+\begin{minipage}{0.7\textwidth}
+
 \textbf{Data highlights for \Sexpr{display_county} County:}
 
-<<highlights, results = 'asis'>>=
+
+<<highlights, echo = FALSE, results = 'asis'>>=
 @
 
 \end{minipage}
-\begin{minipage}{0.4\textwidth}
+\begin{minipage}{0.3\textwidth}
 
 \begin{center}
-\includegraphics[width=2.7in]{county_maps/\Sexpr{str_replace(display_county, pattern = " ", replacement = "_")}-b}
+\includegraphics[width=2.3in]{county_maps/\Sexpr{str_replace(display_county, pattern = " ", replacement = "_")}-b}
 \end{center}
 
 \end{minipage}

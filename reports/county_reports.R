@@ -5,7 +5,7 @@
 library(pocr)
 library(dplyr)
 
-display_county <- "King"
+# display_county <- "King"
 
 
 ## Updated version KEEP ME!
@@ -363,8 +363,8 @@ print(xtable(qf_print,
 ## highlights ----
 ## @knitr highlights
 
-hl_ia_a <- dplyr::filter(hl_ia, date == context_date)
-hl_ihs_a <- dplyr::filter(hl_ihs, date == context_date)
+hl_ia_a <- dplyr::filter(hl_ia, date == max(date))
+# hl_ihs_a <- dplyr::filter(hl_ihs, date == context_date)
 hl_ooh_a <- dplyr::filter(hl_ooh, date == floor_quarter(dtd))
 
 hl <- qf_print[c(1, 3, 4), 1]
@@ -384,17 +384,20 @@ hl_names <- c("\\textbf{U.S. Census Bureau (2012)}",
               "\\quad Percent of Population Under 18 Years",
               #paste0("\\textbf{Child Well-Being Data Portal (", pretty_date(hl_date), ")}"),
               paste0("\\textbf{Child Well-Being Data Portal}"),
-              "\\quad Number of Open Investigations \\& Assessments",
+              paste0("\\quad Number of Open Investigations \\& Assessments, (", pretty_date(hl_ia_a$date[[1]]), ")"),
               #"\\quad Number of Open Placement Prevention Services Cases",
-              paste0("\\quad Number of Open Out-of-Home Care Cases, (", pretty_date(hl_date), ")"),
-              paste0("\\quad Percent of Out-of-Home Care Cases: Children Under 5 Years, (", pretty_date(hl_date), ")"))
+              paste0("\\quad Number of Open Out-of-Home Care Cases, (", pretty_date(hl_ooh_a$date[[1]]), ")"),
+              paste0("\\quad Percent of Out-of-Home Care Cases: Children Under 5 Years, (", pretty_date(hl_ooh_a$date[[1]]), ")"))
 
 hl <- data.frame(v1 = hl_names, v2 = hl)
 
-print.xtable(xtable(hl,
-                    align="llr"),
+print.xtable(xtable(hl, align="llr"),
              sanitize.text.function = as.character,
-             include.rownames = FALSE, include.colnames = FALSE, booktabs = TRUE, floating = FALSE,
+             size = "\\small",
+             include.rownames = FALSE, 
+             include.colnames = FALSE, 
+             booktabs = TRUE,
+             floating = FALSE,
              hline.after = c(-1, nrow(hl)))
 
 ## ia_focus ----

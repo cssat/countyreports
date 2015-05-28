@@ -130,7 +130,7 @@ opts_chunk$set(fig.align='center', fig.show='hold', echo=FALSE, warning = FALSE)
 \vspace{-6pt}
 The Department of Social and Health Services (DSHS) divides Washington State into three regions. \Sexpr{display_county} County is in Region~\Sexpr{region_cd}, along with \Sexpr{comma_vector(region_counties_tx[-which(region_counties_tx == display_county)], oxford = FALSE)} counties. The following report includes basic graphs and tables for Investigations \& Assessments and Out-of-Home Care in \Sexpr{display_county} County}.
 
-The Investigations \& Assessments section (page \pageref{p:ia}) provides household data on, respectively, the total number of investigations and assessments cases since \Sexpr{year(ihs_start_date)}, as well as comparative rates for investigations and assessments cases for all Region~\Sexpr{region_cd} counties.
+The Investigations \& Assessments section (page \pageref{p:ia}) provides household data on the total number of investigations and assessments cases since \Sexpr{year(ihs_start_date)}, as well as comparative rates for investigations and assessments cases for all Region~\Sexpr{region_cd} counties.
   
 The Out-of-Home Care section (page \pageref{p:ooh}) provides total counts and comparative rates for the same time periods, but counts children, not households. The Out-of-Home Care section also provides basic graphs depicting safety, permanency outcomes and well-being for children in out-of-home care.
 
@@ -144,18 +144,19 @@ The Out-of-Home Care section (page \pageref{p:ooh}) provides total counts and co
  
 We hope this report serves as a valuable tool for  \Sexpr{display_county} County.
 
-\begin{minipage}{0.6\textwidth}
-%\vspace{-1.8in}
+\begin{minipage}{0.7\textwidth}
+
 \textbf{Data highlights for \Sexpr{display_county} County:}
 
-<<highlights, results = 'asis'>>=
+
+<<highlights, echo = FALSE, results = 'asis'>>=
 @
 
 \end{minipage}
-\begin{minipage}{0.4\textwidth}
+\begin{minipage}{0.3\textwidth}
 
 \begin{center}
-\includegraphics[width=2.7in]{county_maps/\Sexpr{str_replace(display_county, pattern = " ", replacement = "_")}-b}
+\includegraphics[width=2.3in]{county_maps/\Sexpr{str_replace(display_county, pattern = " ", replacement = "_")}-b}
 \end{center}
 
 \end{minipage}
