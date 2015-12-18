@@ -1,9 +1,5 @@
 ## Report Brewer
 
-## Set working directory appropriately!
-#setwd("S:/Data Portal/county_reports/reports")
-# Use an RProject!
-
 ## Remember to
 ##  - disable focus_county in county_reports.R
 ##  - take versions suffixes off of file names
@@ -16,7 +12,7 @@ require(RCurl)
 require(tools)
 library(stringr)
 library(lubridate)
-setwd("reports/")
+if (!str_detect(getwd(), "/reports$")) setwd("reports/")
 
 write_report <- function(county_arg){
     Sys.setenv(PDFLATEX = "xelatex")
@@ -36,7 +32,7 @@ omit_ooh_counties <- c("Adams", "Asotin", "Columbia", "Ferry", "Garfield",
                        "San Juan", "Skamania", "Wahkiakum")
 counties <- ref_lookup_county[1:39, "county"]
 counties <- counties[counties %nin% omit_ooh_counties]
-counties <- "King"
+#counties <- "King"
 #counties <- c("Cowlitz", "Clark", "Clallam", "Jefferson", "Thurston")
 #counties <- c("Grays Harbor", "San Juan", "Pend Oreille", "Walla Walla")
 #counties <- c("Benton", "Franklin", "Kittitas", "Klickitat", "Walla Walla", "Yakima")
@@ -49,5 +45,4 @@ for (i in seq_along(counties)) {
 bad_exts = c("*.tex", "*.log", "*.out", "*.aux")
 unlink(x = bad_exts)
 
-# plyr::l_ply(counties, function(x) write_report(x, upload = TRUE))
 

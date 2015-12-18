@@ -2,8 +2,11 @@
 .Rhistory
 .RData
 county*.pdf
+county*.Rnw
+reports/figure/*
 *.tex
 *.aux
 *.out
 *.bak
 *.log
+*.pdf
