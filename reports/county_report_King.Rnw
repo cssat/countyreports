@@ -78,8 +78,8 @@
 \frenchspacing %% Single space after period
 
 <<set-options, echo = FALSE, cache = FALSE>>=
-read_chunk('county_reports.R')
-opts_chunk$set(fig.align='center', fig.show='hold', echo=FALSE, warning = FALSE)
+read_chunk('template_rcode.R')
+opts_chunk$set(fig.align = 'center', fig.show = 'hold', echo = FALSE, warning = FALSE)
 @
 
 <<frontmatter, cache=FALSE, include=FALSE>>=
