@@ -14,7 +14,7 @@ library(extrafont)
 
 db <- "production"
 #db <- "review"
-#db <- "test"
+# db <- "test"
 
 #########################
 
@@ -165,7 +165,7 @@ cohort_period <- max(perm2$cohort.period)
 perm_ent <- perm2 %>% left_join(ent) %>% filter(cohort.period == cohort_period) %>%
 	group_by(discharge) %>%
 	summarize(percent = weighted.mean(x = percent, w = number.of.entries)) %>%
-	mutate(geo = region_cd) %>%
+	mutate(geo = paste('Region', region_cd)) %>%
     select(geo, discharge, percent)
 
 
