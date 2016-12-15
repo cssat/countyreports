@@ -29,8 +29,8 @@
 \definecolor{pocPurple}{HTML}{A784B4}
 
 %% Fonts
-\setmainfont[Ligatures=TeX]{Frutiger LT Std 45 Light}
-\allsectionsfont{\fontspec{Archer}}
+\setmainfont[Ligatures=TeX]{Open Sans}
+\allsectionsfont{\fontspec{Open Sans}}
 
 \usepackage{fancyhdr} %% Header and Footer formatting
 \pagestyle{fancy}
@@ -116,7 +116,7 @@ opts_chunk$set(fig.align = 'center', fig.show = 'hold', echo = FALSE, warning = 
     
     %% Stripe Text
     \node[right = 6pt, white] at (0, \banY - \stripeYpos - \stripeHeight + 16pt)
-        {\fontspec{Archer}\Huge{Focus on \Sexpr{display_county} County}};
+        {\fontspec{Open Sans}\Huge{Focus on \Sexpr{display_county} County}};
     
     %% Below Stripe Text
     \node[below right = 6pt, pocDBlue, align = left, text width = \textwidth - 12pt]

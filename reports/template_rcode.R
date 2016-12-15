@@ -12,9 +12,9 @@ library(extrafont)
 
 #### Pick a database ####
 
-db <- "production"
+# db <- "production"
 #db <- "review"
-#db <- "test"
+db <- "test"
 
 #########################
 
@@ -323,8 +323,8 @@ context_plot(ia_region_a,
              colors = dotplot_colors,
              xlab = "Rate of Investigations & Assessments\n(per 1,000 Households)",
              title = paste0("Investigations & Assessments:\nRegion ", region_cd, ", ", ia_context_date_string),
-             title_size = plot_title_size)
-			 
+             title_size = plot_title_size,
+             font = font)
 
 ## ooh_focus ----
 ## @knitr ooh_focus   
