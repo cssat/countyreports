@@ -116,12 +116,12 @@ opts_chunk$set(fig.align = 'center', fig.show = 'hold', echo = FALSE, warning = 
     
     %% Stripe Text
     \node[right = 6pt, white] at (0, \banY - \stripeYpos - \stripeHeight + 16pt)
-        {\fontspec{Open Sans}\Huge{Focus on \Sexpr{display_county} County}};
+        {\fontspec{Open Sans}\textbf{\Huge{Focus on \Sexpr{display_county} County}}};
     
     %% Below Stripe Text
     \node[below right = 6pt, pocDBlue, align = left, text width = \textwidth - 12pt]
         at (0, \banY - \stripeYpos - \stripeHeight) {
-         This \emph{Focus on \Sexpr{display_county} County} report is one of a series of automated county reports for Washington State. These quarterly reports mirror the Child Well-Being Data Portal by providing information on two major parts of the child welfare system: Investigations \& Assessments and Out-of-Home Care. To access the Data Portal and the latest county reports, visit \href{http://www.partnersforourchildren.org/data-portal}{www.partnersforourchildren.org/data-portal}.} ;  
+         This \emph{Focus on \Sexpr{display_county} County} report is one of a series of automated county reports for Washington State. These quarterly reports mirror the Child Well-Being Data Portal by providing information on two major parts of the child welfare system: Investigations \& Assessments and Out-of-Home Care. To access the Data Portal and the latest county reports, visit \href{http://www.pocdata.org}{www.pocdata.org}.} ;  
 \end{tikzpicture}
 
 \vspace{-18pt}
@@ -144,33 +144,36 @@ The Out-of-Home Care section (page \pageref{p:ooh}) provides total counts and co
  
 We hope this report serves as a valuable tool for  \Sexpr{display_county} County.
 
-\begin{minipage}{0.7\textwidth}
+\begin{center}
 
+% \begin{minipage}{0.7\textwidth}
 \textbf{Data highlights for \Sexpr{display_county} County:}
 
 
 <<highlights, echo = FALSE, results = 'asis'>>=
 @
 
-\end{minipage}
-\begin{minipage}{0.3\textwidth}
+\end{center}
+
+% \end{minipage}
+% \begin{minipage}{0.3\textwidth}
 
 \begin{center}
 \includegraphics[width=2.3in]{county_maps/\Sexpr{str_replace(display_county, pattern = " ", replacement = "_")}-b}
 \end{center}
 
-\end{minipage}
+% \end{minipage}
 
 
 \newpage
 \restoregeometry
-\section{\href{http://www.partnersforourchildren.org//data-portal/visualizations/investigations-assessments/trends}
+\section{%\href{http://www.vis.pocdata.org/graphs/ia-counts}
 {Investigations \& Assessments}}
 When professionals and community members report suspected instances of child abuse or neglect to the child welfare system, some of the reports are investigated, some are assessed only (e.g., Family Reconciliation Services) and some are screened out because the information reported (if true) does not meet the statutory definition of child abuse or neglect and there is not an immediate need for an assessment or investigation.\\[6pt]
 \label{p:ia}
 
 \begin{minipage}{\textwidth}
-\subsection{\href{http://www.partnersforourchildren.org//data-portal/visualizations/investigations-assessments/trends}
+\subsection{\href{http://www.vis.pocdata.org/graphs/ia-counts}
 {Investigations \& Assessments:} \Sexpr{display_county} County Focus}
 The graph displays point-in-time (i.e., first day of the quarter) trends in investigations \& assessments cases for \Sexpr{display_county} County.   %if another graph is added, update this.
 <<ia_focus, cache=FALSE, echo=FALSE, fig.keep="high", fig.width=fig_width, fig.height = trend_fig_a * length(focus_county) + trend_fig_b, message = FALSE>>=
@@ -181,7 +184,7 @@ The graph displays point-in-time (i.e., first day of the quarter) trends in inve
 \newpage
 
 \subsection{
-    \href{http://www.partnersforourchildren.org//data-portal/visualizations/investigations-assessments/trends}
+    \href{http://www.vis.pocdata.org/graphs/ia-rates}
     {Investigations \& Assessments: Region~\Sexpr{region_cd}}}
 To give context to the \Sexpr{display_county} County offices' trend data, the following plot compares the rate of investigations \& assessments on \Sexpr{context_date_string} for each Region~\Sexpr{region_cd} county and for Washington State.  Rates, rather than counts (or total numbers), are used because they account for the population differences.
 \nopagebreak[3]
@@ -191,7 +194,7 @@ To give context to the \Sexpr{display_county} County offices' trend data, the fo
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% ----
 \newpage
-\section{\href{http://www.partnersforourchildren.org/data-portal/visualizations/out-home-care/trends}
+\section{%\href{http://www.partnersforourchildren.org/data-portal/visualizations/out-home-care/trends}
     {Out-of-Home Care}
 }
 When children cannot remain safely in their home, they are placed in out-of-home care. Once a child is removed, the child welfare system works to find a safe and permanent home for the child. Most children ultimately reunify with their parents after all safety concerns have been addressed; however, some children exit to other permanency outcomes (e.g., adoption, guardianship).\\[6pt]
@@ -200,7 +203,7 @@ When children cannot remain safely in their home, they are placed in out-of-home
 \label{p:ooh}
 
 \begin{minipage}{\textwidth}
-\subsection{\href{http://www.partnersforourchildren.org/data-portal/visualizations/out-home-care/trends}
+\subsection{\href{http://www.vis.pocdata.org/graphs/ooh-entry-counts}
  {Out-of-Home Care: \Sexpr{display_county} County Focus}
 }
 The following graphs display point-in-time (i.e., first day of the quarter) trends in out-of-home care cases for
@@ -213,7 +216,7 @@ The following graphs display point-in-time (i.e., first day of the quarter) tren
 %\newpage
 
 \begin{minipage}{\textwidth}
-\subsection{\href{http://www.partnersforourchildren.org/data-portal/visualizations/out-home-care/trends}
+\subsection{\href{http://www.vis.pocdata.org/graphs/ooh-entry-rates}
     {Out-of-Home Care: Region~\Sexpr{region_cd}}
 }
 To give context to the \Sexpr{display_county} County trend data, the following plot shows the rate of out-of-home care in quarter \Sexpr{quarter(as.POSIXlt(context_date))} of \Sexpr{year(as.POSIXlt(context_date))} for Region~\Sexpr{region_cd} counties and for Washington State. Rates, rather than counts (or total numbers), are used because they account for the population differences across Washington State counties.\\[1pt]
@@ -224,7 +227,7 @@ To give context to the \Sexpr{display_county} County trend data, the following p
 \end{minipage}
 \newpage
 
-\subsection{\href{http://www.partnersforourchildren.org/data-portal/visualizations/out-home-care/safety}
+\subsection{\href{http://www.vis.pocdata.org/graphs/ooh-re-entry}
     {Out-of-Home Care: Safety}
 }
 
@@ -239,7 +242,7 @@ Table 1 identifies the percentage of children re-entering out-of-home care withi
 \newpage
 
 %% Outcomes Chunk
-\subsection{\href{http://www.partnersforourchildren.org/data-portal/visualizations/out-home-care/outcomes}
+\subsection{\href{http://www.vis.pocdata.org/graphs/permanency-cohort}
     {Out-of-Home Care: Outcomes}
 }
 Under the Adoption and Safe Families Act of 1997 (ASFA), the goal of the child welfare system is to ensure that children are placed in safe and permanent homes as quickly as possible. When it is safe to do so, the child welfare system first seeks to reunify children with their families. If children are unable to be safely reunified, permanency can be achieved through adoption or guardianship. Some children will also exit the system for other reasons, such as emancipation or transfer of custody to different jurisdictions (e.g., Tribal authorities).
@@ -253,7 +256,7 @@ The following bar graph shows the percentage of children in the \Sexpr{year(coho
 \newpage
 
 %% Well-Being
-\subsection{\href{http://www.partnersforourchildren.org/data-portal/visualizations/out-home-care/well-being}
+\subsection{\href{http://www.vis.pocdata.org/graphs/family-settings}
     {Out-of-Home Care: Well-Being}
 }
 
@@ -276,7 +279,8 @@ The table below provides relevant U.S. Census Bureau data for \Sexpr{display_cou
 <<overview, echo = FALSE, results = "asis">>=
 @
 
-U.S. Census data is retrieved from the most recent State and County Quickfacts (\href{http://quickfacts.census.gov/qfd/states/53000.html}{http://quickfacts.census.gov/qfd/states/53000.html}).\\
+U.S. Census data is retrieved from the most recent State and County Quickfacts \newline
+(\href{http://quickfacts.census.gov/qfd/states/53000.html}{http://quickfacts.census.gov/qfd/states/53000.html}).\\
 
 \textbf{Note:} In this report, data are presented using ``unduplicated counts,'' meaning each household with at least one open investigation or one open in-home service case on the first day of the quarter was counted. Unduplicated counts for out-of-home care cases means each child in out-of-home care on the first day of the quarter was counted (see \href{http://http://www.partnersforourchildren.org/publications/using-different-count-types-data-portal}{Technical Bulletin: Interpreting the Type of Count Filter} for more information).  
 \end{document}

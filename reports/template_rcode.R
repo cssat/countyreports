@@ -3,12 +3,13 @@
 ## frontmatter ----
 ## @knitr frontmatter
 library(pocr)
-library(dplyr)
 library(RODBC)
 library(stringr)
 library(lubridate)
 library(xtable)
 library(extrafont)
+library(stringr)
+library(dplyr)
 
 #### Pick a database ####
 
@@ -44,7 +45,7 @@ last_complete$year <- year(data_through_date) - 1
 # Date ranges for queries. DO NOT RENAME without changing .Rnw file too ----
 # data_through_date
 dtd = as.Date(data_through_date)
-start_date = floor_date(dtd, unit = "year") - years(4)
+start_date = floor_date(dtd, unit = "year") - years(3)
 
 floor_quarter = function(x) {
    x = floor_date(x, unit = "month")
@@ -268,7 +269,9 @@ print(xtable(qf_print,
       include.rownames = TRUE,
       include.colnames = TRUE,
       floating = TRUE,
-      booktabs = TRUE)
+      booktabs = TRUE,
+      size = "\\fontsize{9pt}{10pt}\\selectfont")
+
 ## highlights ----
 ## @knitr highlights
 
@@ -351,29 +354,28 @@ context_plot(ooh_region_a, focus = display_county,
 ## ooh_safety----
 ## @knitr ooh_safety
 
+# test <- ooh_safety_data
+
 ooh_safety_data <- filter(ooh_safety_data,
                           cohort.entry.date == cohort_year,
-                          discharge.type == "Reunification",
-                          months.since.exiting.out.of.home.care == 12) %>%
-                          arrange(re.entry.percent) %>%
-                          select(county, re.entry.percent)
-
-ooh_safety_data <- ooh_safety_data[ooh_safety_data$county %nin% omit_ooh_counties, , drop = TRUE]
-ooh_safety_data$county <- gsub("All", "Washington", ooh_safety_data$county)	
-					
-ooh_safety_data$county <- as.character(ooh_safety_data$county)
-ooh_safety_data$county[ooh_safety_data$county == display_county] <- paste0("\\textbf{", display_county, "}")
-ooh_safety_data$county[ooh_safety_data$county == state_label] <- paste0("\\textbf{", state_label, "}")
-
-ooh_safety_data[, 2] <- paste0(round(ooh_safety_data[, 2]), "%")
-
-names(ooh_safety_data) <-  c("County", " Re-Entry")
+                          discharge.type %in% c("Reunification", 'Guardianship', 'Adoption'),
+                          months.since.exiting.out.of.home.care == 12,
+                          ! county %in% omit_ooh_counties) %>%
+                          group_by(county) %>%
+                          summarize(`Re-Entry` = sum(re.entry.percent)) %>%
+                          arrange(`Re-Entry`) %>%
+                          rename(County = county) %>%
+                          mutate(`Re-Entry` = paste0(round(`Re-Entry`), '%')
+                                 ,County = str_replace(County, 'All', '\\\\textbf{Washington}')
+                                 ,County = ifelse(County == display_county, paste0("\\textbf{", display_county, "}"), County)) %>%
+                          as.data.frame()
 
 ooh_safety_cap <- paste('Percentage of Children Re-Entering Out-of-Home Care within One Year of Exiting Out-of-Home Care,',
                         cohort_year,
                         "Exit Cohort")
 
-row.names(ooh_safety_data) <- ooh_safety_data[, 1]
+row.names(ooh_safety_data) <- ooh_safety_data[[1]]
+
 print.xtable(xtable(ooh_safety_data[, -1, drop = FALSE],
                     caption = ooh_safety_cap),
                     align = c("l", "r"),
