@@ -11,6 +11,7 @@
 \usepackage{booktabs} %% Pretty up the tables
 \usepackage[width = .5\textwidth]{caption} %% Width of captions
 \usepackage{xcolor}
+\usepackage[defaultsans]{opensans} 
 
 \usepackage{microtype}
 \setlength{\parskip}{1.5ex} %% Space between paragraphs
@@ -29,8 +30,8 @@
 \definecolor{pocPurple}{HTML}{A784B4}
 
 %% Fonts
-\setmainfont[Ligatures=TeX]{Open Sans}
-\allsectionsfont{\fontspec{Open Sans}}
+% \setmainfont[Ligatures=TeX]{Open Sans}
+% \allsectionsfont{\fontspec{Open Sans}}
 
 \usepackage{fancyhdr} %% Header and Footer formatting
 \pagestyle{fancy}
@@ -116,7 +117,7 @@ opts_chunk$set(fig.align = 'center', fig.show = 'hold', echo = FALSE, warning = 
     
     %% Stripe Text
     \node[right = 6pt, white] at (0, \banY - \stripeYpos - \stripeHeight + 16pt)
-        {\fontspec{Open Sans}\textbf{\Huge{Focus on \Sexpr{display_county} County}}};
+        {\fontspec{Open Sans Bold}\textbf{\Huge{Focus on \Sexpr{display_county} County}}};
     
     %% Below Stripe Text
     \node[below right = 6pt, pocDBlue, align = left, text width = \textwidth - 12pt]
@@ -210,19 +211,17 @@ The following graphs display point-in-time (i.e., first day of the quarter) tren
 \Sexpr{display_county} County.\\[1pt]
 %\nopagebreak[3]
 <<ooh_focus, cache=FALSE, echo=FALSE, fig.keep="high", fig.width=fig_width, fig.height=trend_fig_a + trend_fig_b, warning=FALSE, message=FALSE>>=
-
 @
 \end{minipage}
-%\newpage
+\newpage
 
 \begin{minipage}{\textwidth}
 \subsection{\href{http://www.vis.pocdata.org/graphs/ooh-entry-rates}
     {Out-of-Home Care: Region~\Sexpr{region_cd}}
 }
 To give context to the \Sexpr{display_county} County trend data, the following plot shows the rate of out-of-home care in quarter \Sexpr{quarter(as.POSIXlt(context_date))} of \Sexpr{year(as.POSIXlt(context_date))} for Region~\Sexpr{region_cd} counties and for Washington State. Rates, rather than counts (or total numbers), are used because they account for the population differences across Washington State counties.\\[1pt]
-%\nopagebreak[3]
+% \nopagebreak[3]
 <<ooh_context, cache=FALSE, echo=FALSE, fig.width=fig_width, fig.height = context_fig_b + context_fig_a * length(region_counties)>>=
-
 @
 \end{minipage}
 \newpage
@@ -250,7 +249,6 @@ Under the Adoption and Safe Families Act of 1997 (ASFA), the goal of the child w
 The following bar graph shows the percentage of children in the \Sexpr{year(cohort_date)} entry cohort (those who entered at the same time in \Sexpr{cohort_year}) achieving each outcome for \Sexpr{display_county} County, Region~\Sexpr{region_cd} and Washington State.
 \nopagebreak[3]
 <<ooh_outcomes, cache=FALSE, echo=FALSE, fig.width=fig_width, fig.height=4>>=
-
 @
 
 \newpage
@@ -266,7 +264,6 @@ Assuming that to some extent kinship care measures child's well-being in an out-
 
 \nopagebreak[3]
 <<ooh_wb, cache=FALSE, echo=FALSE, fig.width=fig_width, fig.height = context_fig_b + context_fig_a * length(region_counties)>>=
-
 @
 \vspace{-18pt}
 
@@ -278,10 +275,9 @@ The table below provides relevant U.S. Census Bureau data for \Sexpr{display_cou
 \nopagebreak[3]
 <<overview, echo = FALSE, results = "asis">>=
 @
-
 U.S. Census data is retrieved from the most recent State and County Quickfacts \newline
 (\href{http://quickfacts.census.gov/qfd/states/53000.html}{http://quickfacts.census.gov/qfd/states/53000.html}).\\
 
-\textbf{Note:} In this report, data are presented using ``unduplicated counts,'' meaning each household with at least one open investigation or one open in-home service case on the first day of the quarter was counted. Unduplicated counts for out-of-home care cases means each child in out-of-home care on the first day of the quarter was counted (see \href{http://http://www.partnersforourchildren.org/publications/using-different-count-types-data-portal}{Technical Bulletin: Interpreting the Type of Count Filter} for more information).  
+\textbf{Note:} In this report, data are presented using ``unduplicated counts,'' meaning each household with at least one open investigation or one open in-home service case on the first day of the quarter was counted. Unduplicated counts for out-of-home care cases means each child in out-of-home care on the first day of the quarter was counted (see \href{http://http://www.partnersforourchildren.org/publications/using-different-count-types-data-portal}{Technical Bulletin: Interpreting the Type of Count Filter} for more information).
 \end{document}
 
