@@ -2,7 +2,7 @@
 
 ## frontmatter ----
 ## @knitr frontmatter
-# library(pocr)
+library(pocr)
 library(RODBC)
 library(stringr)
 library(lubridate)
