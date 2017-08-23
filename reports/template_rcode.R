@@ -394,7 +394,10 @@ ggplot(perm, aes(x = discharge, y = percent/100, fill = geo)) +
     theme_bw() +
     geom_bar(position = "dodge", stat = "identity") +
     scale_fill_manual(values = dotplot_colors) +
-    scale_y_continuous(labels = scales::percent) +
+    scale_y_continuous(labels = scales::percent,
+                       expand = c(0, 0),
+                       limits = c(0, 1.1 * max(perm$percent) / 100)
+                       ) +
     labs(x = "",
          y = "Percent experiencing outcome",
          fill = "",

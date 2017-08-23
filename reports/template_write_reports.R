@@ -26,7 +26,7 @@ write_report <- function(county_arg){
              clean = TRUE)
 }
 
-# produce reports
+## produce reports
 omit_ooh_counties <- c("Adams", "Asotin", "Columbia", "Ferry", "Garfield",
                        "Klickitat", "Lincoln", "Pacific", "Pend Oreille",
                        "San Juan", "Skamania", "Wahkiakum")
