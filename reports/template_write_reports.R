@@ -27,12 +27,12 @@ write_report <- function(county_arg){
 }
 
 # produce reports
-omit_ooh_counties <- c("Adams", "Asotin", "Columbia", "Ferry", "Garfield",
-                       "Klickitat", "Lincoln", "Pacific", "Pend Oreille",
-                       "San Juan", "Skamania", "Wahkiakum")
-counties <- ref_lookup_county[1:39, "county"]
-counties <- counties[counties %nin% omit_ooh_counties]
-# counties <- "King"
+# omit_ooh_counties <- c("Adams", "Asotin", "Columbia", "Ferry", "Garfield",
+#                        "Klickitat", "Lincoln", "Pacific", "Pend Oreille",
+#                        "San Juan", "Skamania", "Wahkiakum")
+# counties <- ref_lookup_county[1:39, "county"]
+# counties <- counties[counties %nin% omit_ooh_counties]
+counties <- "King"
 #counties <- c("Cowlitz", "Clark", "Clallam", "Jefferson", "Thurston")
 #counties <- c("Grays Harbor", "San Juan", "Pend Oreille", "Walla Walla")
 #counties <- c("Benton", "Franklin", "Kittitas", "Klickitat", "Walla Walla", "Yakima")

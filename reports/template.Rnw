@@ -104,25 +104,25 @@ opts_chunk$set(fig.align = 'center', fig.show = 'hold', echo = FALSE, warning = 
     \def\logoInsetY{18pt}
     
     %% Draw Background Geomety
-    \filldraw[pocLGreen] (0, 0) rectangle ++(\banX, \banY);
-    \filldraw[pocDGreen] (0, \banY - \stripeYpos) rectangle ++(\banX + \triX, - \stripeHeight);
-    \filldraw[fill=pocLGreen, draw=pocDGreen, join=bevel, thick]
-        (\banX, \banY - \stripeYpos - \stripeHeight) -- ++(\triX, 0) -- ++(-\triX, -\triY) -- cycle;
-    
-    %% Above-stripe Text
-    \node[pocDBlue, below left = 6pt, align = right] at (\banX, \banY)
-        {\textbf{Based on FamLink Data}\\\textbf{Extracted on \Sexpr{pretty_date(data_through_date)}}};
-    \node at (\logoInsetX, \banY - \logoInsetY)
-        {\includegraphics[height=0.3in]{pocLogoSmall}};
-    
-    %% Stripe Text
-    \node[right = 6pt, white] at (0, \banY - \stripeYpos - \stripeHeight + 16pt)
-        {\fontspec{Open Sans Bold}\textbf{\Huge{Focus on \Sexpr{display_county} County}}};
-    
-    %% Below Stripe Text
-    \node[below right = 6pt, pocDBlue, align = left, text width = \textwidth - 12pt]
-        at (0, \banY - \stripeYpos - \stripeHeight) {
-         This \emph{Focus on \Sexpr{display_county} County} report is one of a series of automated county reports for Washington State. These quarterly reports mirror the Child Well-Being Data Portal by providing information on two major parts of the child welfare system: Investigations \& Assessments and Out-of-Home Care. To access the Data Portal and the latest county reports, visit \href{http://www.pocdata.org}{www.pocdata.org}.} ;  
+    % \filldraw[pocLGreen] (0, 0) rectangle ++(\banX, \banY);
+    \filldraw[pocDGreen] (0, \banY - \stripeYpos) line ++(\banX + \triX, - \stripeHeight);
+    % \filldraw[fill=pocLGreen, draw=pocDGreen, join=bevel, thick]
+    %     (\banX, \banY - \stripeYpos - \stripeHeight) -- ++(\triX, 0) -- ++(-\triX, -\triY) -- cycle;
+%     
+%     %% Above-stripe Text
+%     \node[pocDBlue, below left = 6pt, align = right] at (\banX, \banY)
+%         {\textbf{Based on FamLink Data}\\\textbf{Extracted on \Sexpr{pretty_date(data_through_date)}}};
+%     \node at (\logoInsetX, \banY - \logoInsetY)
+%         {\includegraphics[height=0.3in]{pocLogoSmall}};
+%     
+%     %% Stripe Text
+%     \node[right = 6pt, white] at (0, \banY - \stripeYpos - \stripeHeight + 16pt)
+%         {\fontspec{Open Sans Bold}\textbf{\Huge{Focus on \Sexpr{display_county} County}}};
+%     
+%     %% Below Stripe Text
+%     \node[below right = 6pt, pocDBlue, align = left, text width = \textwidth - 12pt]
+%         at (0, \banY - \stripeYpos - \stripeHeight) {
+%          This \emph{Focus on \Sexpr{display_county} County} report is one of a series of automated county reports for Washington State. These quarterly reports mirror the Child Well-Being Data Portal by providing information on two major parts of the child welfare system: Investigations \& Assessments and Out-of-Home Care. To access the Data Portal and the latest county reports, visit \href{http://www.pocdata.org}{www.pocdata.org}.} ;  
 \end{tikzpicture}
 
 \vspace{-18pt}

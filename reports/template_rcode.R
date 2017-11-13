@@ -87,6 +87,8 @@ dotplot_colors <- portal_colors[c(8, 4, 2)]
 plot_title_size = 1.0 ## rel size
 font = "Open Sans"
 
+display_county <- 'King'
+
 focus_county <- tolower(display_county)
 focus_county_cd <- ref_lookup_county$county_cd[tolower(ref_lookup_county$county) == focus_county]
 state_label <- "Washington"
