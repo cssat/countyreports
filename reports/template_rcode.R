@@ -95,7 +95,7 @@ omit_ooh_counties <- c("Adams", "Asotin", "Columbia", "Ferry", "Garfield",
                        "San Juan", "Skamania", "Wahkiakum")
 
 ## Get counties in same region
-region_cd <- ref_lookup_county$region_cd[ref_lookup_county$county_cd == focus_county_cd]
+region_cd <- ref_lookup_county$cd_region[ref_lookup_county$county_cd == focus_county_cd]
 region_counties <- ref_lookup_county[ref_lookup_county$cd_region %in% ref_lookup_county[tolower(ref_lookup_county$county_desc) == focus_county, 3], 1]
 region_counties_tx <- ref_lookup_county$county_desc[ref_lookup_county$county_cd %in% region_counties]
 #region_info <- do.call(rbind, county_to_office_v(region_counties))
