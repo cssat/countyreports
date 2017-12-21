@@ -88,7 +88,7 @@ plot_title_size = 1.0 ## rel size
 font = "Open Sans"
 
 focus_county <- tolower(display_county)
-focus_county_cd <- ref_lookup_county$county_cd[tolower(ref_lookup_county$county) == focus_county]
+focus_county_cd <- ref_lookup_county$county_cd[tolower(ref_lookup_county$county_desc) == focus_county]
 state_label <- "Washington"
 omit_ooh_counties <- c("Adams", "Asotin", "Columbia", "Ferry", "Garfield",
                        "Klickitat", "Lincoln", "Pacific", "Pend Oreille",
@@ -96,8 +96,8 @@ omit_ooh_counties <- c("Adams", "Asotin", "Columbia", "Ferry", "Garfield",
 
 ## Get counties in same region
 region_cd <- ref_lookup_county$region_cd[ref_lookup_county$county_cd == focus_county_cd]
-region_counties <- ref_lookup_county[ref_lookup_county$region_cd %in% ref_lookup_county[tolower(ref_lookup_county$county) == focus_county, 3], 1]
-region_counties_tx <- ref_lookup_county$county[region_counties]
+region_counties <- ref_lookup_county[ref_lookup_county$cd_region %in% ref_lookup_county[tolower(ref_lookup_county$county_desc) == focus_county, 3], 1]
+region_counties_tx <- ref_lookup_county$county_desc[ref_lookup_county$county_cd %in% region_counties]
 #region_info <- do.call(rbind, county_to_office_v(region_counties))
 
 
@@ -143,7 +143,6 @@ ia_region_a <- filter(ia_region, date == max(date)) %>%
 
 ia_context_date <- max(ia_region$date)
 ia_context_date_string <- paste0("Quarter ", quarter(ia_context_date), ", ", year(ia_context_date))
-
 
 ## Permanency Data  -- uses cohort_date
 
@@ -220,30 +219,29 @@ wb_context$context_highlight <- factor(wb_context$context_highlight)
 
 # Census Data Processing (for highlights and overview (appendix))
 
-qf_focus <- quickfacts[c(which(quickfacts$text == display_county), 1), -1]
-qf_table <- as.data.frame(t(qf_focus[, 2:ncol(qf_focus)]))
+# qf_focus <- quickfacts[c(which(quickfacts$text == display_county), 1), -1]
+# qf_table <- as.data.frame(t(qf_focus[, 2:ncol(qf_focus)]))
 
-qf_print <- as.data.frame(qf_table)
-names(qf_print) <- c(paste(display_county, "County"), "Washington")
-row.names(qf_print) <- qf_dict[, 2]
+qf_print <- select(quickfacts, contains(display_county), Washington) 
 
-qf_print[, 1] <- NA
-qf_print[, 2] <- NA
+names(qf_print) <- str_replace_all(names(qf_print), display_county, paste(display_county, 'County'))
 
-qf_print[1, ] <- prettyNum(qf_table[1, ], format = "d", big.mark = ",",
+row.names(qf_print) <- quickfacts$labels
+
+# Fortmatting rows in table with percentages
+
+qf_print[2:nrow(qf_print), 1] <- paste0(formatC(qf_print[2:nrow(qf_print), 1],
+                                         big.mark = ",", digits = 1, format = "f",
+                                         preserve.width = "individual"), '%')
+
+qf_print[2:nrow(qf_print), 2] <- paste0(formatC(qf_print[2:nrow(qf_print), 2],
+                                         big.mark = ",", digits = 1, format = "f",
+                                         preserve.width = "individual"), '%')
+
+# Formating population numbers
+
+qf_print[1, ] <- prettyNum(qf_print[1, ], format = "d", big.mark = ",",
                            preserve.width = "none")
-
-qf_print[2:nrow(qf_table), 1] <- formatC(qf_table[2:nrow(qf_table), 1],
-                                         big.mark = ",", digits = 1, format = "f",
-                                         preserve.width = "individual")
-qf_print[2:nrow(qf_table), 2] <- formatC(qf_table[2:nrow(qf_table), 2],
-                                         big.mark = ",", digits = 1, format = "f",
-                                         preserve.width = "individual")
-pcts <- which(qf_dict$Unit == "PCT")
-qf_print[pcts, 1] <- paste0(qf_print[pcts, 1], "%")
-qf_print[pcts, 2] <- paste0(qf_print[pcts, 2], "%")
-
-qf_print <- qf_print[-c(13, 15, 17), ]
 
 ## Highlights
 
@@ -264,7 +262,8 @@ odbcCloseAll()
 
 print(xtable(qf_print,
              caption = paste(display_county, "County Summary"),
-             align = c("l", "r", "r")),
+             align = c("l", "r", "r")
+             ),
       caption.placement = "top",
       include.rownames = TRUE,
       include.colnames = TRUE,
@@ -290,7 +289,7 @@ hl <- c("",
         paste0(round(100*hl_ooh_a[hl_ooh_a$age.grouping.cd == 1, 4] / hl_ooh_a[hl_ooh_a$age.grouping.cd == 0, 4]), "%"))
 hl <- stringr::str_replace_all(hl, pattern = "%", replacement = "\\\\%")
 
-hl_names <- c("\\textbf{U.S. Census Bureau (2012)}", 
+hl_names <- c("\\textbf{Office of Financial Management (2016)}", 
               "\\quad Total Population",
               "\\quad Percent of Population Under 5 Years",
               "\\quad Percent of Population Under 18 Years",
