@@ -30,7 +30,7 @@ write_report <- function(county_arg){
 omit_ooh_counties <- c("Adams", "Asotin", "Columbia", "Ferry", "Garfield",
                        "Klickitat", "Lincoln", "Pacific", "Pend Oreille",
                        "San Juan", "Skamania", "Wahkiakum")
-counties <- ref_lookup_county[ref_lookup_county$county_cd %in% 1:39,]$county_desc
+counties <- as.character(ref_lookup_county[ref_lookup_county$county_cd %in% 1:39,]$county_desc)
 counties <- counties[counties %nin% omit_ooh_counties]
 # counties <- "King"
 #counties <- c("Cowlitz", "Clark", "Clallam", "Jefferson", "Thurston")
