@@ -24,10 +24,10 @@
 
 %% Colors
 \definecolor{pocDGreen}{HTML}{3D4132}
-% \definecolor{pocLGreen}{HTML}{9FB78D}
-\definecolor{pocLGreen}{HTML}{A2B69A}
-% \definecolor{pocDBlue}{HTML}{244356}
-\definecolor{pocDBlue}{HTML}{3B6E8F}
+\definecolor{pocLGreen}{HTML}{9FB78D}
+% \definecolor{pocLGreen}{HTML}{A2B69A} new green!
+\definecolor{pocDBlue}{HTML}{244356}
+% \definecolor{pocDBlue}{HTML}{3B6E8F} new blue!
 \definecolor{pocLBlue}{HTML}{A3DCE6}
 \definecolor{pocPurple}{HTML}{A784B4}
 
