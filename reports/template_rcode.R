@@ -88,16 +88,16 @@ plot_title_size = 1.0 ## rel size
 font = "Open Sans"
 
 focus_county <- tolower(display_county)
-focus_county_cd <- ref_lookup_county$county_cd[tolower(ref_lookup_county$county) == focus_county]
+focus_county_cd <- ref_lookup_county$county_cd[tolower(ref_lookup_county$county_desc) == focus_county]
 state_label <- "Washington"
 omit_ooh_counties <- c("Adams", "Asotin", "Columbia", "Ferry", "Garfield",
                        "Klickitat", "Lincoln", "Pacific", "Pend Oreille",
                        "San Juan", "Skamania", "Wahkiakum")
 
 ## Get counties in same region
-region_cd <- ref_lookup_county$region_cd[ref_lookup_county$county_cd == focus_county_cd]
-region_counties <- ref_lookup_county[ref_lookup_county$region_cd %in% ref_lookup_county[tolower(ref_lookup_county$county) == focus_county, 3], 1]
-region_counties_tx <- ref_lookup_county$county[region_counties]
+region_cd <- ref_lookup_county$cd_region[ref_lookup_county$county_cd == focus_county_cd]
+region_counties <- ref_lookup_county[ref_lookup_county$cd_region %in% ref_lookup_county[tolower(ref_lookup_county$county_desc) == focus_county, 3], 1]
+region_counties_tx <- ref_lookup_county[ref_lookup_county$county_cd %in% region_counties,]$county_desc
 #region_info <- do.call(rbind, county_to_office_v(region_counties))
 
 
@@ -111,10 +111,10 @@ focus_pop_house <- sqlQuery(con, paste0("call sp_population_household(", focus_c
 #### Get data
 
 #### Focus Data ####
-ia_call  <- stored_procedure("ia_trends_counts", county = focus_county)
+ia_call <- stored_procedure("ia_trends_counts", county = focus_county)
 ooh_call <- stored_procedure("ooh_pit_counts", county = c(focus_county))
 
-ia_focus  <- sqlQuery(con, ia_call)
+ia_focus <- sqlQuery(con, ia_call)
 ooh_focus <- sqlQuery(con, ooh_call)
 
 #### Expand focus data (filling in 0's)
@@ -127,13 +127,13 @@ ooh_focus <- filter(ooh_focus, date >= ooh_start_date)# & date <= ooh_end_date)
 
 #### Context Data ####
 
-ia_region_call  <- stored_procedure("ia_trends_rates", county = c(0, region_counties))
+ia_region_call <- stored_procedure("ia_trends_rates", county = c(0, region_counties))
 ooh_region_call <- stored_procedure("ooh_pit_rates", county = c(0, region_counties))
 
-ia_region  <- sqlQuery(con, ia_region_call)
+ia_region <- sqlQuery(con, ia_region_call)
 ooh_region <- sqlQuery(con, ooh_region_call)
 
-ia_region  <- cr_clean(ia_region)
+ia_region <- cr_clean(ia_region)
 ooh_region <- cr_clean(ooh_region)
 
 ia_region_a <- filter(ia_region, date == max(date)) %>%

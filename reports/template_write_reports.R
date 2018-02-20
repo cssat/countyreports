@@ -5,6 +5,11 @@
 ##  - take versions suffixes off of file names
 ##  - take version suffix out of reference to .R file in .Rnw file
 
+# Need to install an old version of knitr #
+require(devtools)
+install_version('knitr', version = '1.17', repos = "http://cran.us.r-project.org")
+# #
+
 require(pocr)
 require(brew)
 require(knitr)
@@ -30,10 +35,10 @@ write_report <- function(county_arg){
 omit_ooh_counties <- c("Adams", "Asotin", "Columbia", "Ferry", "Garfield",
                        "Klickitat", "Lincoln", "Pacific", "Pend Oreille",
                        "San Juan", "Skamania", "Wahkiakum")
-counties <- ref_lookup_county[1:39, "county"]
+counties <- as.character(ref_lookup_county[ref_lookup_county$county_cd %in% 1:39,]$county_desc)
 counties <- counties[counties %nin% omit_ooh_counties]
 # counties <- "King"
-#counties <- c("Cowlitz", "Clark", "Clallam", "Jefferson", "Thurston")
+# counties <- c("Cowlitz", "Clark", "Clallam", "Jefferson", "Thurston")
 #counties <- c("Grays Harbor", "San Juan", "Pend Oreille", "Walla Walla")
 #counties <- c("Benton", "Franklin", "Kittitas", "Klickitat", "Walla Walla", "Yakima")
 
