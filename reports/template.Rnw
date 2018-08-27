@@ -129,7 +129,7 @@ opts_chunk$set(fig.align = 'center', fig.show = 'hold', echo = FALSE, warning = 
 
 \section*{Overview}
 \vspace{-6pt}
-The Department of Social and Health Services (DSHS) divides Washington State into three regions. \Sexpr{display_county} County is in Region~\Sexpr{region_cd}, along with \Sexpr{comma_vector(region_counties_tx[-which(region_counties_tx == display_county)], oxford = FALSE)} counties. The following report includes basic graphs and tables for Investigations \& Assessments and Out-of-Home Care in \Sexpr{display_county} County}.
+The Department of Social and Health Services (DSHS) divides Washington State into three regions. \Sexpr{display_county} County is in Region~\Sexpr{region_cd}, along with \Sexpr{comma_vector(region_counties_tx[-which(region_counties_tx == display_county)], oxford = FALSE)} counties. The following report includes basic graphs and tables for Investigations \& Assessments and Out-of-Home Care in \Sexpr{display_county} County.
 
 The Investigations \& Assessments section (page \pageref{p:ia}) provides household data on the total number of investigations and assessments cases since \Sexpr{year(ihs_start_date)}, as well as comparative rates for investigations and assessments cases for all Region~\Sexpr{region_cd} counties.
   
