@@ -5,11 +5,14 @@
 ##  - take versions suffixes off of file names
 ##  - take version suffix out of reference to .R file in .Rnw file
 
+<<<<<<< HEAD
 # Need to install an old version of knitr #
 # require(devtools)
 # install_version('knitr', version = '1.17', repos = "http://cran.us.r-project.org")
 # #
 
+=======
+>>>>>>> 3efd721c533d32155bf8bf6b6f6181446fa7a611
 require(pocr)
 require(brew)
 require(knitr)
