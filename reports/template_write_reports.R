@@ -6,8 +6,8 @@
 ##  - take version suffix out of reference to .R file in .Rnw file
 
 # Need to install an old version of knitr #
-require(devtools)
-install_version('knitr', version = '1.17', repos = "http://cran.us.r-project.org")
+# require(devtools)
+# install_version('knitr', version = '1.17', repos = "http://cran.us.r-project.org")
 # #
 
 require(pocr)

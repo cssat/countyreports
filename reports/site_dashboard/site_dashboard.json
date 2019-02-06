@@ -1,0 +1,355 @@
+[
+  {
+    "dash1": {
+      "title": "Investigations into reported child abuse and neglect",
+      "subtitle": "January 01, 2017",
+      "meta": "This includes CPS investigations as well as other assessments and services such as FAR and CFWS.",
+      "highlights": [
+        {
+          "label": "investigations into reported child abuse or neglect",
+          "raw_data": 48222,
+          "formatted_data": "48,222"
+        }
+      ],
+      "dashboard": {
+        "raceeth": {
+          "title": "Who experiences investigations?",
+          "type": "table",
+          "meta": "",
+          "data": [
+            {
+              "label": "American Indian/Alaskan Native",
+              "raw_data": 242,
+              "formatted_data": 242
+            },
+            {
+              "label": "Black/African American",
+              "raw_data": 122,
+              "formatted_data": 122
+            },
+            {
+              "label": "Multiracial",
+              "raw_data": 79,
+              "formatted_data": 79
+            },
+            {
+              "label": "White/Caucasian",
+              "raw_data": 60,
+              "formatted_data": 60
+            },
+            {
+              "label": "Hispanic or Latino",
+              "raw_data": 55,
+              "formatted_data": 55
+            }
+          ]
+        },
+        "reporters": {
+          "title": "Who reported these cases?",
+          "type": "donut",
+          "meta": "",
+          "data": [
+            {
+              "label": "Educator",
+              "raw_data": 19,
+              "formatted_data": "19%"
+            },
+            {
+              "label": "Law Enforcement Officer",
+              "raw_data": 10,
+              "formatted_data": "10%"
+            },
+            {
+              "label": "Parent/Guardian",
+              "raw_data": 12,
+              "formatted_data": "12%"
+            },
+            {
+              "label": "Social Service Professional",
+              "raw_data": 20,
+              "formatted_data": "20%"
+            },
+            {
+              "label": "Other",
+              "raw_data": 39,
+              "formatted_data": "39%"
+            }
+          ]
+        },
+        "reason": {
+          "title": "Why are households investigated?",
+          "type": "bar",
+          "meta": "number of reports",
+          "data": [
+            {
+              "label": "Neglect",
+              "raw_data": 30049,
+              "formatted_data": "30,049"
+            },
+            {
+              "label": "Physical Abuse",
+              "raw_data": 13911,
+              "formatted_data": "13,911"
+            },
+            {
+              "label": "Sexual Abuse",
+              "raw_data": 2125,
+              "formatted_data": " 2,125"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "dash2": {
+      "title": "Children in Out-of-Home Care",
+      "subtitle": "January 01, 2018",
+      "meta": "",
+      "highlights": [
+        {
+          "label": "children in out-of-home care on July 01, 2018",
+          "raw_data": 9246,
+          "formatted_data": "9,246"
+        }
+      ],
+      "dashboard": {
+        "raceeth": {
+          "title": "Who is in out-of-home care?",
+          "type": "table",
+          "meta": "",
+          "data": [
+            {
+              "label": "American Indian/Alaskan Native",
+              "raw_data": 13,
+              "formatted_data": 13.4
+            },
+            {
+              "label": "Black/African American",
+              "raw_data": 12,
+              "formatted_data": 11.8
+            },
+            {
+              "label": "Multiracial",
+              "raw_data": 11,
+              "formatted_data": 11.2
+            },
+            {
+              "label": "Hispanic or Latino",
+              "raw_data": 6,
+              "formatted_data": 5.6
+            },
+            {
+              "label": "White/Caucasian",
+              "raw_data": 5,
+              "formatted_data": 5.4
+            }
+          ]
+        },
+        "age": {
+          "title": "How old are children in care",
+          "type": "donut",
+          "meta": "",
+          "data": [
+            {
+              "label": "0-4 Years Old",
+              "raw_data": 43,
+              "formatted_data": "43%"
+            },
+            {
+              "label": "5-9 Years Old",
+              "raw_data": 26,
+              "formatted_data": "26%"
+            },
+            {
+              "label": "10-14 Years Old",
+              "raw_data": 19,
+              "formatted_data": "19%"
+            },
+            {
+              "label": "15-17 Years Old",
+              "raw_data": 12,
+              "formatted_data": "12%"
+            }
+          ]
+        },
+        "county": {
+          "title": "How do Washington's counties compare?",
+          "type": "bar",
+          "meta": "rate of children in care per 1,000",
+          "data": [
+            {
+              "label": "Spokane",
+              "raw_data": 9,
+              "formatted_data": 9.1
+            },
+            {
+              "label": "Pierce",
+              "raw_data": 7,
+              "formatted_data": 7.4
+            },
+            {
+              "label": "Snohomish",
+              "raw_data": 5,
+              "formatted_data": 4.9
+            },
+            {
+              "label": "King",
+              "raw_data": 4,
+              "formatted_data": 3.6
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "dash3": {
+      "title": "How long do children stay in Care?",
+      "subtitle": 2016,
+      "meta": "",
+      "highlights": [
+        {
+          "label": "median length of stay in out-of-home care",
+          "raw_data": 18,
+          "formatted_data": "18 Months"
+        }
+      ],
+      "dashboard": {
+        "six-months": {
+          "title": "Less Than 6 Months",
+          "type": "stat",
+          "meta": "",
+          "data": [
+            {
+              "label": "Less Than 6 Months",
+              "raw_data": 32,
+              "formatted_data": "32%"
+            }
+          ]
+        },
+        "one-year": {
+          "title": "Less Than 1 Year",
+          "type": "stat",
+          "meta": "",
+          "data": [
+            {
+              "label": "Less Than 1 Year",
+              "raw_data": 39,
+              "formatted_data": "39%"
+            }
+          ]
+        },
+        "two-years": {
+          "title": "Less Than 2 Years",
+          "type": "stat",
+          "meta": "",
+          "data": [
+            {
+              "label": "Less Than 2 Years",
+              "raw_data": 60,
+              "formatted_data": "60%"
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "dash4": {
+      "title": "Outcomes within 3 Years",
+      "subtitle": 2014,
+      "meta": "",
+      "highlights": [
+        {
+          "label": "children who reunify with their parents within 3 years",
+          "raw_data": 57,
+          "formatted_data": "57%"
+        }
+      ],
+      "dashboard": {
+        "still-in-ooh": {
+          "title": "Still in Care",
+          "type": "bar",
+          "meta": "",
+          "data": [
+            {
+              "label": "All Ages",
+              "raw_data": 18,
+              "formatted_data": "18%"
+            },
+            {
+              "label": "Less Than 1",
+              "raw_data": 16,
+              "formatted_data": "16%"
+            },
+            {
+              "label": "3-4 Years Old",
+              "raw_data": 20,
+              "formatted_data": "20%"
+            },
+            {
+              "label": "10-14 Years Old",
+              "raw_data": 24,
+              "formatted_data": "24%"
+            }
+          ]
+        },
+        "reunification": {
+          "title": "Reunification",
+          "type": "bar",
+          "meta": "",
+          "data": [
+            {
+              "label": "All Ages",
+              "raw_data": 57,
+              "formatted_data": "57%"
+            },
+            {
+              "label": "Less Than 1",
+              "raw_data": 43,
+              "formatted_data": "43%"
+            },
+            {
+              "label": "3-4 Years Old",
+              "raw_data": 60,
+              "formatted_data": "60%"
+            },
+            {
+              "label": "10-14 Years Old",
+              "raw_data": 62,
+              "formatted_data": "62%"
+            }
+          ]
+        },
+        "adoption": {
+          "title": "Adoption",
+          "type": "bar",
+          "meta": "",
+          "data": [
+            {
+              "label": "All Ages",
+              "raw_data": 14,
+              "formatted_data": "14%"
+            },
+            {
+              "label": "Less Than 1",
+              "raw_data": 33,
+              "formatted_data": "33%"
+            },
+            {
+              "label": "3-4 Years Old",
+              "raw_data": 12,
+              "formatted_data": "12%"
+            },
+            {
+              "label": "10-14 Years Old",
+              "raw_data": 4,
+              "formatted_data": "4%"
+            }
+          ]
+        }
+      }
+    }
+  }
+]
