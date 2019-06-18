@@ -19,6 +19,8 @@
 \clubpenalty = 10000        %% Orphans and widows
 \widowpenalty = 10000
 
+\setlength{\headheight}{21pt}
+
 % \usepackage[normalem]{ulem} %% For underlines (in the URLs)
 % \DeclareUrlCommand{\ulurl}{\uline}
 
@@ -129,7 +131,7 @@ opts_chunk$set(fig.align = 'center', fig.show = 'hold', echo = FALSE, warning = 
 
 \section*{Overview}
 \vspace{-6pt}
-The Department of Children, YOtuh and Families (DCYF) divides Washington State into three regions. \Sexpr{display_county} County is in Region~\Sexpr{region_cd}, along with \Sexpr{comma_vector(region_counties_tx[-which(region_counties_tx == display_county)], oxford = FALSE)} counties. 
+The Department of Children, Youth and Families (DCYF) divides Washington State into three regions. \Sexpr{display_county} County is in Region~\Sexpr{region_cd}, along with \Sexpr{comma_vector(region_counties_tx[-which(region_counties_tx == display_county)], oxford = FALSE)} counties. 
 
 Investigations \& Assessments (page \pageref{p:ia}) provides \textbf{household data} on the total number of investigations and assessments cases since \Sexpr{year(ihs_start_date)}, as well as comparative rates for investigations and assessments cases for all Region~\Sexpr{region_cd} counties.
   
