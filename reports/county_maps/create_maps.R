@@ -53,8 +53,6 @@ for (i in 1:NROW(regions)) {
 
     map_data$highlight_county <- map_data$region
 
-    # print(highlight_map)
-
     ggsave(filename = paste0(tools::toTitleCase(regions$county[[i]]), "-b.pdf"), plot = highlight_map, dpi = 320)    
 }
 
