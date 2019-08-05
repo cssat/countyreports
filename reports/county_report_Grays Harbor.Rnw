@@ -131,7 +131,7 @@ opts_chunk$set(fig.align = 'center', fig.show = 'hold', echo = FALSE, warning = 
 
 \section*{Overview}
 \vspace{-6pt}
-The Department of Children, Youth and Families (DCYF) divides Washington state into six regions. Since some of the regions are only one or two counties, Regions 1 and 2, 3 and 4, and 5 and 6 are grouped together. \Sexpr{display_county} County is in Regions~\Sexpr{focus_region_cd}, along with \Sexpr{comma_vector(region_counties_tx[-which(region_counties_tx == display_county)], oxford = FALSE)} counties. 
+The Department of Children, Youth and Families (DCYF) divides Washington state into six regions. Since some of the regions are only one or two counties, Regions 1 and 2, 3 and 4, and 5 and 6 are grouped together. \Sexpr{display_county} County is in the Regions~\Sexpr{focus_region_cd} group, along with \Sexpr{comma_vector(region_counties_tx[-which(region_counties_tx == display_county)], oxford = FALSE)} counties. 
 
 Investigations \& Assessments (page \pageref{p:ia}) provides \textbf{household data} on the total number of investigations and assessments cases since \Sexpr{year(ihs_start_date)}, as well as comparative rates for investigations and assessments cases for all Regions~\Sexpr{focus_region_cd} counties.
   
