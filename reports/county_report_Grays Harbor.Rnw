@@ -19,6 +19,8 @@
 \clubpenalty = 10000        %% Orphans and widows
 \widowpenalty = 10000
 
+\setlength{\headheight}{21pt}
+
 % \usepackage[normalem]{ulem} %% For underlines (in the URLs)
 % \DeclareUrlCommand{\ulurl}{\uline}
 
@@ -111,7 +113,7 @@ opts_chunk$set(fig.align = 'center', fig.show = 'hold', echo = FALSE, warning = 
     
     %% Above-stripe Text
     \node[pocDBlue, below left = 6pt, align = right] at (\banX, \banY)
-        {\textbf{Based on FamLink Data}\\\textbf{Extracted on \Sexpr{pretty_date(data_through_date)}}};
+        {\textbf{Extracted on \Sexpr{pretty_date(data_through_date)}}\\\textbf{Based on FamLink Data}};
     \node at (\logoInsetX, \banY - \logoInsetY)
         {\includegraphics[height=0.3in]{pocLogoSmall}};
     
@@ -122,18 +124,18 @@ opts_chunk$set(fig.align = 'center', fig.show = 'hold', echo = FALSE, warning = 
     %% Below Stripe Text
     \node[below right = 6pt, pocDBlue, align = left, text width = \textwidth - 12pt]
         at (0, \banY - \stripeYpos - \stripeHeight) {
-         This \emph{Focus on \Sexpr{display_county} County} report is one of a series of automated county reports for Washington State. These quarterly reports mirror the Child Well-Being Data Portal by providing information on two major parts of the child welfare system: Investigations \& Assessments and Out-of-Home Care. To access the Data Portal and the latest county reports, visit \href{http://www.pocdata.org}{www.pocdata.org}.} ;  
-\end{tikzpicture}
+         \emph{Focus on \Sexpr{display_county} County} provides an overview of child welfare-related data. These quarterly, automated reports mirror the Child Well-Being Data Portal by providing information on two major parts of the child welfare system: Investigations \& Assessments and Out-of-Home Care.} ;
+         \end{tikzpicture}
 
 \vspace{-18pt}
 
 \section*{Overview}
 \vspace{-6pt}
-The Department of Social and Health Services (DSHS) divides Washington State into three regions. \Sexpr{display_county} County is in Region~\Sexpr{region_cd}, along with \Sexpr{comma_vector(region_counties_tx[-which(region_counties_tx == display_county)], oxford = FALSE)} counties. The following report includes basic graphs and tables for Investigations \& Assessments and Out-of-Home Care in \Sexpr{display_county} County.
+The Department of Children, Youth and Families (DCYF) divides Washington state into six regions. Since some of the regions are only one or two counties, Regions 1 and 2, 3 and 4, and 5 and 6 are grouped together. \Sexpr{display_county} County is in the Regions~\Sexpr{focus_region_cd} group, along with \Sexpr{comma_vector(region_counties_tx[-which(region_counties_tx == display_county)], oxford = FALSE)} counties. 
 
-The Investigations \& Assessments section (page \pageref{p:ia}) provides household data on the total number of investigations and assessments cases since \Sexpr{year(ihs_start_date)}, as well as comparative rates for investigations and assessments cases for all Region~\Sexpr{region_cd} counties.
+Investigations \& Assessments (page \pageref{p:ia}) provides \textbf{household data} on the total number of investigations and assessments cases since \Sexpr{year(ihs_start_date)}, as well as comparative rates for investigations and assessments cases for all Regions~\Sexpr{focus_region_cd} counties.
   
-The Out-of-Home Care section (page \pageref{p:ooh}) provides total counts and comparative rates for the same time periods, but counts children, not households. The Out-of-Home Care section also provides basic graphs depicting safety, permanency outcomes and well-being for children in out-of-home care.
+Out-of-Home Care (page \pageref{p:ooh}) provides total counts and comparative rates for the same time periods, but counts \textbf{children}, not households. The Out-of-Home Care section also provides basic graphs depicting safety, permanency outcomes and well-being for children in out-of-home care.
 
 \begin{itemize}
 \item Safety is measured as the percentage of children who re-entered out-of-home care within one year after already exiting to a permanent placement (i.e., reunification, adoption, and guardianship), with region-level and state-level context. 
@@ -142,13 +144,11 @@ The Out-of-Home Care section (page \pageref{p:ooh}) provides total counts and co
 
 \item Well-being is measured as the average percent of time children spent in the care of relatives (kinship care) while in out-of-home care during 2009-2010.
 \end{itemize}
- 
-We hope this report serves as a valuable tool for  \Sexpr{display_county} County.
 
 \begin{center}
 
 % \begin{minipage}{0.7\textwidth}
-\textbf{Data highlights for \Sexpr{display_county} County:}
+\textbf{High-level overview for \Sexpr{display_county} County:}
 
 
 <<highlights, echo = FALSE, results = 'asis'>>=
@@ -162,6 +162,8 @@ We hope this report serves as a valuable tool for  \Sexpr{display_county} County
 \begin{center}
 \includegraphics[width=2.3in]{county_maps/\Sexpr{str_replace(display_county, pattern = " ", replacement = "_")}-b}
 \end{center}
+
+We hope this report serves as a valuable tool. If you have questions, please contact us at \href{mailto:info@partnersforourchildren.org}{info@partnersforourchildren.org}.
 
 % \end{minipage}
 
@@ -186,8 +188,8 @@ The graph displays point-in-time (i.e., first day of the quarter) trends in inve
 
 \subsection{
     \href{http://www.vis.pocdata.org/graphs/ia-rates}
-    {Investigations \& Assessments: Region~\Sexpr{region_cd}}}
-To give context to the \Sexpr{display_county} County offices' trend data, the following plot compares the rate of investigations \& assessments on \Sexpr{context_date_string} for each Region~\Sexpr{region_cd} county and for Washington State.  Rates, rather than counts (or total numbers), are used because they account for the population differences.
+    {Investigations \& Assessments: Regions~\Sexpr{focus_region_cd}}}
+To give context to the \Sexpr{display_county} County offices' trend data, the following plot compares the rate of investigations \& assessments on \Sexpr{context_date_string} for Regions~\Sexpr{focus_region_cd} counties and for Washington state.  Rates, rather than counts (or total numbers), are used because they account for the population differences.
 \nopagebreak[3]
 <<ia_context, cache=FALSE, echo=FALSE, fig.width=fig_width, fig.height = context_fig_b + context_fig_a * length(region_counties) >>=
 @
@@ -217,9 +219,9 @@ The following graphs display point-in-time (i.e., first day of the quarter) tren
 
 \begin{minipage}{\textwidth}
 \subsection{\href{http://www.vis.pocdata.org/graphs/ooh-entry-rates}
-    {Out-of-Home Care: Region~\Sexpr{region_cd}}
+    {Out-of-Home Care: Regions~\Sexpr{focus_region_cd}}
 }
-To give context to the \Sexpr{display_county} County trend data, the following plot shows the rate of out-of-home care in quarter \Sexpr{quarter(as.POSIXlt(context_date))} of \Sexpr{year(as.POSIXlt(context_date))} for Region~\Sexpr{region_cd} counties and for Washington State. Rates, rather than counts (or total numbers), are used because they account for the population differences across Washington State counties.\\[1pt]
+To give context to the \Sexpr{display_county} County trend data, the following plot shows the rate of out-of-home care in quarter \Sexpr{quarter(as.POSIXlt(context_date))} of \Sexpr{year(as.POSIXlt(context_date))} for Regions~\Sexpr{focus_region_cd} counties and for Washington state. Rates, rather than counts (or total numbers), are used because they account for the population differences across Washington State counties.\\[1pt]
 % \nopagebreak[3]
 <<ooh_context, cache=FALSE, echo=FALSE, fig.width=fig_width, fig.height = context_fig_b + context_fig_a * length(region_counties)>>=
 @
@@ -232,7 +234,7 @@ To give context to the \Sexpr{display_county} County trend data, the following p
 
 Sometimes, when children experience a permanency outcome after out-of-home placement (e.g., reunification, guardianship, adoption), safety concerns can resurface. In some circumstances, these safety concerns can be severe enough that the child needs to re-enter out-of-home care.
 
-Table 1 identifies the percentage of children re-entering out-of-home care within one year of exiting to a permanent outcome in \Sexpr{year(cohort_date)}, by permanency type, for Region~\Sexpr{region_cd} counties, as well as for Washington State overall. The higher percentages of re-entry point to the challenges of providing a safe, permanent outcome for the child.
+Table 1 identifies the percentage of children re-entering out-of-home care within one year of exiting to a permanent outcome in \Sexpr{year(cohort_date)}, by permanency type, for Regions~\Sexpr{focus_region_cd} counties, as well as for Washington state overall. The higher percentages of re-entry point to the challenges of providing a safe, permanent outcome for the child.
 \vspace{12pt}
 \nopagebreak[3]
 <<ooh_safety, results = "asis">>=
@@ -246,7 +248,7 @@ Table 1 identifies the percentage of children re-entering out-of-home care withi
 }
 Under the Adoption and Safe Families Act of 1997 (ASFA), the goal of the child welfare system is to ensure that children are placed in safe and permanent homes as quickly as possible. When it is safe to do so, the child welfare system first seeks to reunify children with their families. If children are unable to be safely reunified, permanency can be achieved through adoption or guardianship. Some children will also exit the system for other reasons, such as emancipation or transfer of custody to different jurisdictions (e.g., Tribal authorities).
 
-The following bar graph shows the percentage of children in the \Sexpr{year(cohort_date)} entry cohort (those who entered at the same time in \Sexpr{cohort_year}) achieving each outcome for \Sexpr{display_county} County, Region~\Sexpr{region_cd} and Washington State.
+The following bar graph shows the percentage of children in the \Sexpr{year(cohort_date)} entry cohort (those who entered at the same time in \Sexpr{cohort_year}) achieving each outcome for \Sexpr{display_county} County, Regions~\Sexpr{focus_region_cd} and Washington state.
 \nopagebreak[3]
 <<ooh_outcomes, cache=FALSE, echo=FALSE, fig.width=fig_width, fig.height=4>>=
 @
@@ -260,7 +262,7 @@ The following bar graph shows the percentage of children in the \Sexpr{year(coho
 
 When placement in out-of-home care is necessary, the physical and psychological needs, as well as the general well-being of the child must be considered. While individual needs vary and well-being is difficult to measure directly, research has shown that placement in kinship care (i.e., a relative's home) can enhance a child's physical and emotional health. Yet, in some cases, the child's best interests necessitate placement in a non-family setting. For example, a child may need specialized services to accomplish a specific therapeutic goal. In such cases, a child may be placed in a non-family setting until those therapeutic goals are met.
 
-Assuming that to some extent kinship care measures child's well-being in an out-of-home setting, the graph below shows the percent of children placed in kinship care (as opposed to foster care or a non-family setting) for the counties in Region~\Sexpr{region_cd}. While in out-of-home care, children often stay in different settings. For example, a child can start in a foster home, but then move to kinship care as soon as a willing and able relative is identified. The online Data Portal provides a more detailed look at kinship care, as well as several other measures related to child well-being.
+Assuming that to some extent kinship care measures child's well-being in an out-of-home setting, the graph below shows the percent of children placed in kinship care (as opposed to foster care or a non-family setting) for the counties in Regions~\Sexpr{focus_region_cd}. While in out-of-home care, children often stay in different settings. For example, a child can start in a foster home, but then move to kinship care as soon as a willing and able relative is identified. The online Data Portal provides a more detailed look at kinship care, as well as several other measures related to child well-being.
 
 \nopagebreak[3]
 <<ooh_wb, cache=FALSE, echo=FALSE, fig.width=fig_width, fig.height = context_fig_b + context_fig_a * length(region_counties)>>=
@@ -271,12 +273,12 @@ Assuming that to some extent kinship care measures child's well-being in an out-
 
 \section{Appendix}
 
-The table below provides relevant U.S. Census Bureau data for \Sexpr{display_county} County and for Washington State. 
+The table below provides relevant U.S. Census Bureau data for \Sexpr{display_county} County and for Washington state. 
 \nopagebreak[3]
 <<overview, echo = FALSE, results = "asis">>=
 @
-U.S. Census data is retrieved from the most recent State and County Quickfacts \newline
-(\href{http://quickfacts.census.gov/qfd/states/53000.html}{http://quickfacts.census.gov/qfd/states/53000.html}).\\
+Office of Financial Management popuklation date retrieved from: \newline
+(\href{https://ofm.wa.gov/washington-data-research/population-demographics}{https://ofm.wa.gov/washington-data-research/population-demographics}).\\
 
 \textbf{Note:} In this report, data are presented using ``unduplicated counts,'' meaning each household with at least one open investigation or one open in-home service case on the first day of the quarter was counted. Unduplicated counts for out-of-home care cases means each child in out-of-home care on the first day of the quarter was counted (see \href{http://http://www.partnersforourchildren.org/publications/using-different-count-types-data-portal}{Technical Bulletin: Interpreting the Type of Count Filter} for more information).
 \end{document}

@@ -95,9 +95,16 @@ omit_ooh_counties <- c("Adams", "Asotin", "Columbia", "Ferry", "Garfield",
                        "San Juan", "Skamania", "Wahkiakum")
 
 ## Get counties in same region
-region_cd <- ref_lookup_county$cd_region[ref_lookup_county$county_cd == focus_county_cd]
+# region_cd <- ref_lookup_county$cd_region[ref_lookup_county$county_cd == focus_county_cd]
+focus_region_cd <- ref_lookup_county$old_region_cd[ref_lookup_county$county_cd == focus_county_cd]
+focus_region_cd <- ifelse(focus_region_cd %in% c(1, 2), '1 and 2', ifelse(focus_region_cd %in% c(3, 4), '3 and 4', '5 and 6'))
+
 region_counties <- ref_lookup_county[ref_lookup_county$cd_region %in% ref_lookup_county[tolower(ref_lookup_county$county_desc) == focus_county, 3], 1]
 region_counties_tx <- ref_lookup_county[ref_lookup_county$county_cd %in% region_counties,]$county_desc
+
+
+
+# focus_regions_cd
 #region_info <- do.call(rbind, county_to_office_v(region_counties))
 
 
@@ -166,7 +173,7 @@ cohort_period <- max(perm2$cohort.period)
 perm_ent <- perm2 %>% left_join(ent) %>% filter(cohort.period == cohort_period) %>%
 	group_by(discharge) %>%
 	summarize(percent = weighted.mean(x = percent, w = number.of.entries)) %>%
-	mutate(geo = paste('Region', region_cd)) %>%
+	mutate(geo = paste('Regions', focus_region_cd)) %>%
     select(geo, discharge, percent)
 
 
@@ -290,7 +297,7 @@ hl <- c("",
         paste0(round(100*hl_ooh_a[hl_ooh_a$age.grouping.cd == 1, 4] / hl_ooh_a[hl_ooh_a$age.grouping.cd == 0, 4]), "%"))
 hl <- stringr::str_replace_all(hl, pattern = "%", replacement = "\\\\%")
 
-hl_names <- c("\\textbf{U.S. Census Bureau (2012)}", 
+hl_names <- c("\\textbf{Office of Financial Management (2018)}", 
               "\\quad Total Population",
               "\\quad Percent of Population Under 5 Years",
               "\\quad Percent of Population Under 18 Years",
@@ -325,7 +332,7 @@ context_plot(ia_region_a,
              focus = display_county,
              colors = dotplot_colors,
              xlab = "Rate of Investigations & Assessments\n(per 1,000 Households)",
-             title = paste0("Investigations & Assessments:\nRegion ", region_cd, ", ", ia_context_date_string),
+             title = paste0("Investigations & Assessments:\nRegions ", focus_region_cd, ", ", ia_context_date_string),
              title_size = plot_title_size,
              font = font)
 
@@ -348,7 +355,7 @@ ooh_region_a <- ooh_region_a[ooh_region_a$county %nin% omit_ooh_counties, , drop
 
 context_plot(ooh_region_a, focus = display_county,
              xlab = "Rate of Out-of-Home Care (per 1,000 Children)",
-             title = paste0("Out-of-Home Care:\nRegion ", region_cd, ", ", context_date_string),
+             title = paste0("Out-of-Home Care:\nRegions ", focus_region_cd, ", ", context_date_string),
              title_size = plot_title_size)		 
 			 
 ## ooh_safety----
@@ -417,7 +424,7 @@ ggplot(perm, aes(x = discharge, y = percent/100, fill = geo)) +
                    # "\nQuarter ", quarter(wb_start_date), ", ", year(wb_start_date),
                    # " through ", "Quarter ", quarter(wb_end_date), ", ", year(wb_end_date))
 
-wb_title <- paste0("Kinship Care, ", pretty_date(wb_context$date[1]), ": Region ", region_cd)
+wb_title <- paste0("Kinship Care, ", pretty_date(wb_context$date[1]), ": Regions ", focus_region_cd)
 				   
 ggplot(wb_context, aes(x = family.setting..kin.placement. / 100,
                        y = county, color = context_highlight)) +
