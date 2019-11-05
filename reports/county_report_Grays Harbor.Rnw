@@ -131,9 +131,9 @@ opts_chunk$set(fig.align = 'center', fig.show = 'hold', echo = FALSE, warning = 
 
 \section*{Overview}
 \vspace{-6pt}
-The Department of Children, Youth and Families (DCYF) divides Washington state into six regions. Since some of the regions are only one or two counties, Regions 1 and 2, 3 and 4, and 5 and 6 are grouped together. \Sexpr{display_county} County is in the Regions~\Sexpr{focus_region_cd} group, along with \Sexpr{comma_vector(region_counties_tx[-which(region_counties_tx == display_county)], oxford = FALSE)} counties. 
+The Department of Children, Youth and Families (DCYF) divides Washington state into six regions. Since some of the regions are only one or two counties, Regions 1 and 2, 3 and 4, and 5 and 6 are grouped together. \Sexpr{display_county} County is in the Region~\Sexpr{focus_region_cd} group, along with \Sexpr{comma_vector(region_counties_tx[-which(region_counties_tx == display_county)], oxford = FALSE)} counties. 
 
-Investigations \& Assessments (page \pageref{p:ia}) provides \textbf{household data} on the total number of investigations and assessments cases since \Sexpr{year(ihs_start_date)}, as well as comparative rates for investigations and assessments cases for all Regions~\Sexpr{focus_region_cd} counties.
+Investigations \& Assessments (page \pageref{p:ia}) provides \textbf{household data} on the total number of investigations and assessments cases since \Sexpr{year(ihs_start_date)}, as well as comparative rates for investigations and assessments cases for all Region~\Sexpr{focus_region_cd} counties.
   
 Out-of-Home Care (page \pageref{p:ooh}) provides total counts and comparative rates for the same time periods, but counts \textbf{children}, not households. The Out-of-Home Care section also provides basic graphs depicting safety, permanency outcomes and well-being for children in out-of-home care.
 
@@ -142,7 +142,7 @@ Out-of-Home Care (page \pageref{p:ooh}) provides total counts and comparative ra
 
 \item Permanency outcomes are measured as the percentage of children who entered out-of-home care and experienced one of the following outcomes after two years:  reunification, adoption, guardianship, emancipation, other or still in out-of-home care. 
 
-\item Well-being is measured as the average percent of time children spent in the care of relatives (kinship care) while in out-of-home care during 2009-2010.
+\item Well-being is measured as the average percent of time children spent in the care of relatives (kinship care) while in out-of-home care.
 \end{itemize}
 
 \begin{center}

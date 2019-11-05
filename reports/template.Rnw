@@ -68,7 +68,7 @@
 \rhead{\color{pocDGreen} \leftmark}
 
 %%% Footer
-\lfoot{\color{pocDGreen} \href{http://www.partnersforourchildren.org}{www.partnersforourchildren.org}}
+\lfoot{\color{pocDGreen} \href{https://www.cssat.org/}{https://www.cssat.org/}}
 \rfoot{\color{pocDGreen} \thepage}
 \renewcommand{\footrulewidth}{0.5pt}
 \renewcommand{\footrule}{\hbox to\headwidth{\color{pocDGreen}\leaders\hrule height \footrulewidth\hfill}}
@@ -163,7 +163,7 @@ Out-of-Home Care (page \pageref{p:ooh}) provides total counts and comparative ra
 \includegraphics[width=2.3in]{county_maps/\Sexpr{str_replace(display_county, pattern = " ", replacement = "_")}-b}
 \end{center}
 
-We hope this report serves as a valuable tool. If you have questions, please contact us at \href{mailto:info@partnersforourchildren.org}{info@partnersforourchildren.org}.
+We hope this report serves as a valuable tool. If you have questions, please contact us at \href{mailto:cssat@uw.edu}{cssat@uw.edu}.
 
 % \end{minipage}
 
